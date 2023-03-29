@@ -5,6 +5,8 @@ Proyecto de ejemplo para el armado de framework de automatización en conjunto c
 Orador: 
 * Domingo Saavedra
 
-Participantes:
+Participantes: 
+* Guadalupe Nieto
+
 
 
