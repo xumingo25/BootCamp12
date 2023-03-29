@@ -8,11 +8,11 @@ Orador:
 * Domingo Saavedra
 
 
-Participantes:
+
+Participantes: 
+* Guadalupe Nieto
+* Bazán Vanesa Florencia
 * Lucia Galbiatti  
 * Guadalupe Nieto
 * Mercedes Vatalaro
-
-
-
 
