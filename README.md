@@ -6,4 +6,5 @@ Orador:
 * Domingo Saavedra
 
 Participantes:
+
 * Bárbara Pino
