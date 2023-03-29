@@ -7,6 +7,4 @@ Orador:
 
 Participantes: 
 * Guadalupe Nieto
-
-
 * Bárbara Pino
