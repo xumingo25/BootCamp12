@@ -11,6 +11,7 @@ Orador:
 Participantes:
 * Lucia Galbiatti  
 * Guadalupe Nieto
+* Mercedes Vatalaro
 
 
 
