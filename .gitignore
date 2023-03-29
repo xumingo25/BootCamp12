@@ -2,10 +2,13 @@
 *.class
 
 #.idea Folder
-/.idea/
+/.idea
+
 
 # Log file
 *.log
+#Ignorar carpeta .idea
+*.idea
 
 # BlueJ files
 *.ctxt
