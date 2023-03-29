@@ -13,8 +13,8 @@ Participantes:
 * Claudia Alexandra Salgán Bettuzzi
 * Daniela Pites
 * Guadalupe Nieto
+* Lourdes del Mar
 * Bazán Vanesa Florencia
 * Lucia Galbiatti
 * Mercedes Vatalaro
 * Rocio Magnarelli
-
