@@ -10,10 +10,10 @@ Orador:
 
 Participantes:
 * Daniela Pites
+* Guadalupe Nieto
+* Bazán Vanesa Florencia
 * Lucia Galbiatti  
 * Guadalupe Nieto
-
-
-
+* Mercedes Vatalaro
 
 
