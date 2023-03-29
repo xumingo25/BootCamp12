@@ -8,7 +8,9 @@ Orador:
 * Domingo Saavedra
 
 
-Participantes:
+Participantes: 
+* Guadalupe Nieto
+* Claudia Alexandra Salgán Bettuzzi
 * Daniela Pites
 * Guadalupe Nieto
 * Bazán Vanesa Florencia
