@@ -6,6 +6,8 @@
 
 # Log file
 *.log
+#Ignorar carpeta .idea
+*.idea
 
 # BlueJ files
 *.ctxt
