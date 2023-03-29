@@ -18,3 +18,4 @@ Participantes:
 * Lucia Galbiatti  
 * Guadalupe Nieto
 * Mercedes Vatalaro
+* Paloma Contreras
