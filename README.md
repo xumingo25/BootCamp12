@@ -6,5 +6,5 @@ Orador:
 * Domingo Saavedra
 
 Participantes:
-
+* Bazán Vanesa Florencia 
 
