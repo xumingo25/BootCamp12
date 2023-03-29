@@ -1,11 +1,13 @@
 # Compiled class file
 *.class
 
-#.idea Folder
-/.idea/
+#idea folder
+/.idea
 
 # Log file
 *.log
+#Ignorar carpeta .idea
+*.idea
 
 # BlueJ files
 *.ctxt
