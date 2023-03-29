@@ -4,15 +4,17 @@ Proyecto de ejemplo para el armado de framework de automatización en conjunto c
 
 
 # Integrantes
-Orador: 
+Orador:
 * Domingo Saavedra
 
 
 Participantes:
-* Lucia Galbiatti  
+* Bárbara Pino
+* Claudia Alexandra Salgán Bettuzzi
+* Daniela Pites
 * Guadalupe Nieto
 * Lourdes del Mar
-
-
-
-
+* Bazán Vanesa Florencia
+* Lucia Galbiatti
+* Mercedes Vatalaro
+* Rocio Magnarelli
