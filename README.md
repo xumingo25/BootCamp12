@@ -8,5 +8,6 @@ Orador:
 * Domingo Saavedra
 
 Participantes:
+* Lucia Galbiatti 
 
 
