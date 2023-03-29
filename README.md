@@ -7,6 +7,8 @@ Orador:
 
 Participantes: 
 * Guadalupe Nieto
+* Claudia Alexandra Salgán Bettuzzi
+
 
 
 
