@@ -7,6 +7,7 @@ Orador:
 
 Participantes: 
 * Guadalupe Nieto
+* Mercedes Vatalaro
 
 
 
