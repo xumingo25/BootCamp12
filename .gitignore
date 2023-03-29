@@ -2,7 +2,8 @@
 *.class
 
 #.idea Folder
-/.idea/
+/.idea
+
 
 # Log file
 *.log
