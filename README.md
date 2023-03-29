@@ -4,12 +4,13 @@ Proyecto de ejemplo para el armado de framework de automatización en conjunto c
 
 
 # Integrantes
-Orador: 
+Orador:
 * Domingo Saavedra
 
 
 Participantes: 
 * Guadalupe Nieto
+* Bárbara Pino
 * Claudia Alexandra Salgán Bettuzzi
 * Daniela Pites
 * Guadalupe Nieto
@@ -17,5 +18,3 @@ Participantes:
 * Lucia Galbiatti  
 * Guadalupe Nieto
 * Mercedes Vatalaro
-
-

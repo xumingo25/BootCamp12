@@ -1,9 +1,8 @@
 # Compiled class file
 *.class
 
-#.idea Folder
+#idea folder
 /.idea
-
 
 # Log file
 *.log
