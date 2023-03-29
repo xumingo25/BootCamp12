@@ -8,14 +8,14 @@ Orador:
 * Domingo Saavedra
 
 
-Participantes: 
-* Guadalupe Nieto
+Participantes:
 * Bárbara Pino
 * Claudia Alexandra Salgán Bettuzzi
 * Daniela Pites
 * Guadalupe Nieto
+* Lourdes del Mar
 * Bazán Vanesa Florencia
-* Lucia Galbiatti  
-* Guadalupe Nieto
+* Lucia Galbiatti
 * Mercedes Vatalaro
-* Paloma A. Contreras 
+* Rocio Magnarelli
+* Paloma Contreras
