@@ -18,4 +18,5 @@ Participantes:
 * Lucia Galbiatti
 * Mercedes Vatalaro
 * Rocio Magnarelli
+* Maria Veronica Velez Saadi
 * Francisca Benavides
