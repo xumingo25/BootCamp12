@@ -21,3 +21,4 @@ Participantes:
 * Paloma Contreras
 * Maria Veronica Velez Saadi
 * Francisca Benavides
+* Rocio Quezada
