@@ -19,3 +19,5 @@ Participantes:
 * Mercedes Vatalaro
 * Rocio Magnarelli
 * Paloma Contreras
+* Maria Veronica Velez Saadi
+* Francisca Benavides
