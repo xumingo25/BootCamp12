@@ -34,11 +34,11 @@ class BrowserTest {
         // Exercise
         driver.get("https://www.google.com/");
         String title = driver.getTitle();
-        System.out.println("Título de página: "+title);
+        System.out.println("Titulo de pagina: "+title);
 
         driver.navigate().to("https://www.youtube.com/");
         title = driver.getTitle();
-        System.out.println("Título de página: "+title);
+        System.out.println("Titulo de pagina: "+title);
         // Verify
         //assertThat(title).contains("Selenium WebDriver");
     }
