@@ -1,4 +1,4 @@
-package LGalbiatti;
+package lgalbiatti;
 
 
 import io.github.bonigarcia.wdm.WebDriverManager;

@@ -4,6 +4,8 @@
 #idea folder
 /.idea
 
+/.idea/misc.xml
+
 # Log file
 *.log
 #Ignorar carpeta .idea
