@@ -35,9 +35,9 @@ class ChromeTest {
         // Exercise
         driver.get("https://www.google.com/");
         driver.manage().window().maximize();
-        WebElement buscar = driver.findElement(By.name("q"));
-        buscar.sendKeys("Tsoft");
-        buscar.sendKeys(Keys.ENTER);
+        WebElement b = driver.findElement(By.name("q"));
+        b.sendKeys("Tsoft");
+        b.sendKeys(Keys.ENTER);
         WebElement t = driver.findElement(By.partialLinkText("HOME - TSOFT"));
         t.click();
         String title = driver.getTitle();
