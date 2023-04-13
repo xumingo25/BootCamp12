@@ -25,6 +25,7 @@ dependencies {
     testImplementation group: 'org.seleniumhq.selenium', name: 'selenium-java', version: '3.141.59'
     testImplementation("io.github.bonigarcia:webdrivermanager:5.3.2")
 
+
 }
 
 application {
