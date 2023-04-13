@@ -1,4 +1,4 @@
-package demoSelenium.bpino;
+package bpino;
 
 //import static org.assertj.core.api.Assertions.assertThat;
 import org.junit.jupiter.api.AfterEach;
