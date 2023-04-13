@@ -45,7 +45,7 @@ class ChromeTest {
         System.out.println("ejecutando el driver de google devuelve el titulo: " + title);
         driver.navigate().to("https://github.com/xumingo25?tab=repositories");
         String titleRedirect = driver.getCurrentUrl();
-        System.out.println("ejecutando la prueba de redireccion al repositorio de Domingo " + titleRedirect);
+        System.out.println("probando metodo navigate y getCurrentUrl  me devuelve lo siguiente: " + titleRedirect);
 
 
         // Verify
