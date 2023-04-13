@@ -40,7 +40,7 @@ class BrowserTest {
         driver.manage().window().maximize();
         WebElement buscar = driver.findElement(By.name("q"));
         buscar.sendKeys("Tsoft");
-        buscar.sendKeys(Keys.RETURN);
+        buscar.sendKeys(Keys.ENTER);
         WebElement t = driver.findElement(By.partialLinkText("HOME - TSOFT"));
         t.click();
         String title = driver.getTitle();
