@@ -51,6 +51,8 @@ class BrowserTest {
             driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
             // Verify
             //assertThat(title).contains("Selenium WebDriver");
+
+
         }
 
     }
