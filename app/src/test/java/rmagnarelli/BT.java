@@ -39,7 +39,7 @@ class BrowserTest {
 
         @Test
         void test() {
-            // Exercise
+            // Ejercicio
             driver.get("https://www.google.com");
             driver.manage().window().maximize();
             driver.findElement(By.id("APjFqb")).sendKeys("TSOFT" + Keys.ENTER);
@@ -51,8 +51,6 @@ class BrowserTest {
             driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
             // Verify
             //assertThat(title).contains("Selenium WebDriver");
-
-
         }
 
     }
