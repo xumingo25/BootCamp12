@@ -20,7 +20,6 @@ class ChromeTest {
         }
 
 
-
         @BeforeEach
         void setupTest() {
             driver = new ChromeDriver();
