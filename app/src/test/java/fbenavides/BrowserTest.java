@@ -1,15 +1,13 @@
 package fbenavides;
 
-
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-
-
 import io.github.bonigarcia.wdm.WebDriverManager;
+import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.edge.EdgeDriver;
 
 class EdgeTest {
@@ -29,19 +27,24 @@ class EdgeTest {
 
     @AfterEach
     void teardown() {
-        driver.quit();
+       //driver.quit();
     }
 
     @Test
     void test() {
-        // Exercise
-        driver.get("https://www.bing.com/");
+
+        /* driver.get("https://www.bing.com/");
         String title = driver.getTitle();
         System.out.println("Titulo pagina de Bing: " + title);
 
         driver.navigate().to(" https://www.google.cl");
         title = driver.getTitle();
-        System.out.println("Titulo pagina del Gugul: " + title);
+        System.out.println("Titulo pagina del Gugul: " + title); */
+
+        driver.navigate().to("https://www.google.com") ;
+        driver.manage().window().maximize();
+        //driver.manage().window().setSize(new Dimension(1920, 1080));
+        //driver.manage().window().fullscreen();
 
 
         // Verify
