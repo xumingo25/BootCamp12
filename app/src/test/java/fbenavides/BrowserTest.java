@@ -46,6 +46,10 @@ class EdgeTest {
         //driver.manage().window().setSize(new Dimension(1920, 1080));
         //driver.manage().window().fullscreen();
 
+        driver.findElement(By.id("APjFqb")).sendKeys("tsoft",(Keys.ENTER));
+        driver.findElement(By.className("byrV5b")).click();
+        String title = driver.getTitle();
+        System.out.println("Titulo de la pagina: "+title);
 
         // Verify
         // assertThat(title).contains("Selenium WebDriver");
