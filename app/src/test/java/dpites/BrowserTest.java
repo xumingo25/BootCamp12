@@ -29,9 +29,12 @@ class BrowserTest {
     @AfterEach
     void teardown() {driver.quit();}
 
+    void teardown() {
+        driver.quit();
+    }
+
     @Test
     void test() {
-        /*// Exercise
         driver.get("https://www.google.com/");
         String title = driver.getTitle();
         System.out.println("Titulo de la pagina: "+title);
@@ -41,10 +44,11 @@ class BrowserTest {
         System.out.println("Titulo de la pagina: "+title);
         // Verify
         //assertThat(title).contains("Selenium WebDriver");
-
-         */
-
-        driver.navigate().to("https://www.google.com") ;
+    }
+    
+    @Test
+    void testTareaGoogle(){
+    driver.navigate().to("https://www.google.com") ;
         driver.manage().window().maximize();
         driver.findElement(By.id("APjFqb")).sendKeys("tsoft",(Keys.ENTER));
         driver.findElement(By.className("byrV5b")).click();
@@ -53,7 +57,7 @@ class BrowserTest {
 
         //driver.manage().window().setSize(new Dimension(1920, 1080));
         //driver.manage().window().fullscreen();
-    }
+   }
 
 }
 

@@ -1,4 +1,4 @@
-package Gnieto;
+package gnieto;
 
 
 import io.github.bonigarcia.wdm.WebDriverManager;
