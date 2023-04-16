@@ -27,7 +27,9 @@ class BrowserTest {
     }
 
     @AfterEach
+
      void teardown() {driver.quit();}
+
 
     @Test
     void test() {
@@ -54,6 +56,8 @@ class BrowserTest {
         //driver.manage().window().setSize(new Dimension(1920, 1080));
         //driver.manage().window().fullscreen();
    }
+
+
 
 }
 
