@@ -49,13 +49,13 @@ public class TareaLocatorsV3 {
 
         //defino los webelements y comienzo a completar los distintos inputs
         WebElement elementoEmail = driver.findElement(By.xpath("//*[@id='email']"));
-        elementoEmail.sendKeys("FakeAccount3838@gmail.com");
+        elementoEmail.sendKeys("FakeAccount3939@gmail.com");
 
         try{
 
             //WebElement confirmacionEmail = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id='confirm']")));
             WebElement elementoConfirmacionEmail = driver.findElement(By.xpath("//*[@id='confirm']"));
-            elementoConfirmacionEmail.sendKeys("FakeAccount3838@gmail.com");
+            elementoConfirmacionEmail.sendKeys("FakeAccount3939@gmail.com");
 
         }catch (NoSuchElementException e){
 
@@ -71,7 +71,7 @@ public class TareaLocatorsV3 {
         WebElement confirmacionUser = wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//*[@id='displayname']")));
         WebElement elementoUser = driver.findElement(By.xpath("//*[@id='displayname']"));
         elementoUser.sendKeys(
-                "FakeAccount38",
+                "FakeAccount39",
                 Keys.TAB, "28",
                 Keys.TAB, Keys.ENTER, "a", Keys.ENTER,
                 Keys.TAB, "1995",
