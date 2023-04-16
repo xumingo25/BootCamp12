@@ -5,15 +5,14 @@ import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.openqa.selenium.By;
-import org.openqa.selenium.Keys;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
+import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-public class TareaLocators {
+public class TareaLocatorsV3 {
+
+
 
     public static WebDriver driver;
 
@@ -50,11 +49,20 @@ public class TareaLocators {
 
         //defino los webelements y comienzo a completar los distintos inputs
         WebElement elementoEmail = driver.findElement(By.xpath("//*[@id='email']"));
-        elementoEmail.sendKeys("FakeAccount3737@gmail.com");
+        elementoEmail.sendKeys("FakeAccount3838@gmail.com");
 
-        WebElement confirmacionEmail = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id='confirm']")));
-        WebElement elementoConfirmacionEmail = driver.findElement(By.xpath("//*[@id='confirm']"));
-        elementoConfirmacionEmail.sendKeys("FakeAccount3737@gmail.com");
+        try{
+
+            //WebElement confirmacionEmail = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id='confirm']")));
+            WebElement elementoConfirmacionEmail = driver.findElement(By.xpath("//*[@id='confirm']"));
+            elementoConfirmacionEmail.sendKeys("FakeAccount3838@gmail.com");
+
+        }catch (NoSuchElementException e){
+
+            System.out.println("No hay input de confirmacion de email");
+
+        }
+
 
         WebElement confirmacionPass = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id='password']")));
         WebElement elementoPass = driver.findElement(By.xpath("//*[@id='password']"));
@@ -63,7 +71,7 @@ public class TareaLocators {
         WebElement confirmacionUser = wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//*[@id='displayname']")));
         WebElement elementoUser = driver.findElement(By.xpath("//*[@id='displayname']"));
         elementoUser.sendKeys(
-                "FakeAccount37",
+                "FakeAccount38",
                 Keys.TAB, "28",
                 Keys.TAB, Keys.ENTER, "a", Keys.ENTER,
                 Keys.TAB, "1995",
@@ -94,7 +102,6 @@ public class TareaLocators {
     void teardown() {
         //driver.quit();
     }
-
 
 
 
