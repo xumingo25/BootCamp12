@@ -1,34 +1,34 @@
-package bpino;
-
-//import static org.assertj.core.api.Assertions.assertThat;
+package rquezada;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.openqa.selenium.By;
-import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.edge.EdgeDriver;
 
-class BrowserTest {
+class ChromeTest {
 
     WebDriver driver;
 
     @BeforeAll
     static void setupClass() {
-        WebDriverManager.chromedriver().setup();
+
+        //WebDriverManager.chromedriver().setup();
+        WebDriverManager.edgedriver().setup();
     }
 
     @BeforeEach
     void setupTest() {
-        driver = new ChromeDriver();
+
+        driver = new EdgeDriver();
     }
 
     @AfterEach
     void teardown() {
+
         driver.quit();
     }
 
@@ -36,14 +36,14 @@ class BrowserTest {
     void test() {
         // Exercise
         driver.get("https://www.google.com/");
-        driver.manage().window().maximize();
-        WebElement buscar = driver.findElement(By.name("q"));
-        buscar.sendKeys("Tsoft");
-        buscar.sendKeys(Keys.ENTER);
-        WebElement t = driver.findElement(By.partialLinkText("HOME - TSOFT"));
-        t.click();
         String title = driver.getTitle();
-        System.out.println("Titulo de pagina: "+title);
+
+        System.out.println("Titulo página de Google: "+title);
+
+        driver.navigate().to("https://www.spotify.com/");
+        title = driver.getTitle();
+
+        System.out.println("Titulo página de Spotify: "+title);
 
         // Verify
         //assertThat(title).contains("Selenium WebDriver");
