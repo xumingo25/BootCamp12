@@ -1,12 +1,20 @@
 package mvatalaro;
 
-import io.github.bonigarcia.wdm.WebDriverManager;
+
+//import static org.assertj.core.api.Assertions.assertThat;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+
+import io.github.bonigarcia.wdm.WebDriverManager;
+import org.openqa.selenium.support.ui.WebDriverWait;
+
 
 class ChromeTest {
 
@@ -30,16 +38,15 @@ class ChromeTest {
     @Test
     void test() {
         // Exercise
-        driver.get("https://e-learning.tsoftglobal.com/");
+        driver.get("https://www.google.com/");
+        driver.manage().window().maximize();
+        WebElement b = driver.findElement(By.name("q"));
+        b.sendKeys("Tsoft");
+        b.sendKeys(Keys.ENTER);
+        WebElement t = driver.findElement(By.partialLinkText("HOME - TSOFT"));
+        t.click();
         String title = driver.getTitle();
-        System.out.println("El titulo de la plataforma Moodle de Tsoft es: " + title);
-
-        driver.navigate().to("https://junit.org/junit5/");
-
-        title= driver.getTitle();
-
-        System.out.println("El titulo de la plataforma Junit es: " + title);
-
+        System.out.println("Titulo de pagina: "+title);
        //  Verify
         //assertThat(title).contains("Selenium WebDriver");
     }
