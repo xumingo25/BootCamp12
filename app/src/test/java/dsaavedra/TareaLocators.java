@@ -1,27 +1,18 @@
-package loudelmar;
+package dsaavedra;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
-import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
-import org.openqa.selenium.By;
-import org.openqa.selenium.Keys;
+import org.junit.jupiter.api.*;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
-import java.util.concurrent.TimeUnit;
-
-import static org.junit.jupiter.api.Assertions.assertEquals;
-
-public class TestLocator {
+public class TareaLocators {
     WebDriver driver;
 
     @FindBy(xpath = "//button[contains(text(),'Registra')]")
-    WebElement btnRegistrarse;
+    WebElement btnRegistrase;
 
     @BeforeAll
     static void preparacionClase(){
@@ -42,7 +33,7 @@ public class TestLocator {
     @Test
     void testEjemploSpotify(){
         //Aqui crearemos el test
-        btnRegistrarse.click();
+        btnRegistrase.click();
     }
 
     @AfterEach

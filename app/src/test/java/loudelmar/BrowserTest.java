@@ -23,6 +23,7 @@ class BrowserTest {
     WebElement element;
 
 
+
     @BeforeAll
     static void setupClass() {
         WebDriverManager.chromedriver().setup();
