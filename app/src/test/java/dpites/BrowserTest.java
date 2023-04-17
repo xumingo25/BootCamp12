@@ -8,7 +8,6 @@ import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
@@ -28,7 +27,9 @@ class BrowserTest {
     }
 
     @AfterEach
-    void teardown() {driver.quit();}
+
+     void teardown() {driver.quit();}
+
 
 lñ<<<<<<< HEAD
 
