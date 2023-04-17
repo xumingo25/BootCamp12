@@ -60,9 +60,6 @@ class SpotifyTest {
 // Exercise
 
 
-
-
-
         btnRegistrase.click();
 
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
