@@ -17,7 +17,8 @@ import java.util.concurrent.TimeUnit;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-class BrowserTest {
+class ChromeTest {
+
 
         WebDriver driver;
         WebElement element;
