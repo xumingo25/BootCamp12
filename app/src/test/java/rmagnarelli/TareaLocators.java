@@ -34,6 +34,8 @@ public class TareaLocators {
     void testEjemploSpotify(){
         //Aqui crearemos el test
         btnRegistrase.click();
+
+
     }
 
     @AfterEach
