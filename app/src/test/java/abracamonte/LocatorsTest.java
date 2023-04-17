@@ -69,7 +69,28 @@ public class LocatorsTest {
         WebElement diaNac = driver.findElement(By.xpath("//input[contains(@placeholder, 'DD')]"));
         diaNac.sendKeys("12");
 
+        WebElement mesNac = driver.findElement(By.xpath("//select[contains(@name, 'month')]"));
+        mesNac.sendKeys("Abril");
 
+        WebElement yearNac = driver.findElement(By.xpath("//input[contains(@placeholder, 'AAAA')]"));
+        yearNac.sendKeys("1994");
+
+        WebElement female= driver.findElement(By.xpath("//label[contains(@for, 'gender_option_female')]"));
+        female.click();
+
+        WebElement noMarket = driver.findElement(By.xpath("//label[contains(@for, 'marketing-opt-checkbox')]"));
+        noMarket.click();
+
+        WebElement compartirDatos = driver.findElement(By.xpath("//label[contains(@for, 'third-party-checkbox')]"));
+        compartirDatos.click();
+
+        // Esperar a que se cargue la página de resultados
+        try {
+
+            Thread.sleep(15000); // Esperar 5 segundos
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
 
 
         title = driver.getTitle();
