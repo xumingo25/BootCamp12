@@ -66,13 +66,13 @@ class TareaLocatorsSpotify {
     void test() throws InterruptedException {
         btnRegistrase.click();
         driver.manage().timeouts().implicitlyWait(15, TimeUnit.SECONDS);
-        correo.sendKeys("pajaritos0.pio@pio.com");
+        correo.sendKeys("pajaritos.musicales@pio.com");
         driver.manage().timeouts().implicitlyWait(15, TimeUnit.SECONDS);
         boolean exists = driver.findElements(By.xpath("//*[@id=\'confirm\']")).size() != 0;
 
         if (exists) {
             driver.manage().timeouts().implicitlyWait(15, TimeUnit.SECONDS);
-            correoConfirmar.sendKeys("pajaritos0.pio@pio.com");
+            correoConfirmar.sendKeys("pajaritos.musicales@pio.com");
             driver.manage().timeouts().implicitlyWait(15, TimeUnit.SECONDS);
 
         }
