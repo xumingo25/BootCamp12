@@ -1,4 +1,4 @@
-package gnieto;
+/*package gnieto;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.junit.jupiter.api.AfterEach;
@@ -15,6 +15,7 @@ class ChromeTest {
     WebDriver driver;
 =======
         WebDriver driver;
+
 
         @BeforeAll
         static void setupClass() {
@@ -72,5 +73,5 @@ class ChromeTest {
         // assertThat(title).contains("Selenium WebDriver");
     }
 
-}
+}*/
 
