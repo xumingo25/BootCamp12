@@ -25,8 +25,18 @@ public class TareaSpotify {
     @FindBy(xpath = "//*[@id=\'password\']")
     WebElement contrasenia;
 
-    @FindBy(xpath = "//*[@id="displayname"]")
+    @FindBy(xpath = "//*[@id=\'displayname\']")
     WebElement nombre;
+
+    @FindBy(xpath = "//*[@id=\'day\']")
+    WebElement dia;
+
+    @FindBy (xpath = "//*[@id=\'month\']")
+    WebElement Mes;
+
+    @FindBy(xpath = "//*[@id=\'year\']")
+    WebElement anio;
+
 
 
 
@@ -58,13 +68,16 @@ public class TareaSpotify {
 
         }
         
-        driver.manage().timeouts().implicitlyWait(7, TimeUnit.SECONDS);
-        contrasenia.click();
+
         contrasenia.sendKeys("callefalsa123");
 
-        driver.manage().timeouts().implicitlyWait(7, TimeUnit.SECONDS);
-        nombre.click();
         nombre.sendKeys("Ro");
+
+        dia.sendKeys("11");
+
+        Mes.sendKeys("febrero");
+
+        anio.sendKeys("2003");
 
 
     }
