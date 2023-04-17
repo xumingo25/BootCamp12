@@ -77,7 +77,7 @@ public class TareaLocatorsPino {
 
         }
 
-        contrasena.sendKeys("pajaritoconchaleco12");
+        contrasena.sendKeys("PajaritoConChaleco12");
 
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 
