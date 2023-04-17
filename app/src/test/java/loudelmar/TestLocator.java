@@ -5,26 +5,46 @@ import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.openqa.selenium.By;
-import org.openqa.selenium.Keys;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
+import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.Select;
 
 import java.util.concurrent.TimeUnit;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class TestLocator {
+class TestLocator {
     WebDriver driver;
 
     @FindBy(xpath = "//button[contains(text(),'Registra')]")
     WebElement btnRegistrarse;
+    @FindBy(xpath = "//*[@id=\'email\']")
+    WebElement inputEmail;
+    @FindBy(xpath = "//*[@id=\'confirm\']")
+    WebElement inputConfirmMail;
+    @FindBy(xpath = "//*[@id=\'password\']")
+    WebElement inputPassword;
+    @FindBy(xpath = "//*[@id=\'displayname\']")
+    WebElement inputName;
+    @FindBy(xpath = "//*[@id=\'day\']")
+    WebElement inputDay;
+    @FindBy(xpath = "//*[@id=\'year\']")
+    WebElement inputYear;
+    @FindBy(xpath = "//span[contains(text(),'Muj')]")
+    WebElement selectMujer;
+    @FindBy(xpath = "//span[contains(text(),'No quiero recibir')]")
+    WebElement selectNoQuieroRecibirMensajes;
+    @FindBy(xpath = "//*[@id=\'__next\']/main/div/div/form/div[8]/div/button/span[1]")
+    WebElement btnConfirmarRegistro;
+    @FindBy(xpath = "//*[@id=\'main\']/div/div[2]/div[1]/header/button[1]")
+    WebElement btnMejorarTuCuenta;
+
+
 
     @BeforeAll
-    static void preparacionClase(){
+     static void preparacionClase(){
         WebDriverManager.chromedriver().setup();
 
     }
@@ -33,20 +53,50 @@ public class TestLocator {
     void preTests(){
         driver = new ChromeDriver();
         PageFactory.initElements(driver,this);
-        driver.get("https://open.spotify.com/");
-
-        //Maximizar page
-        driver.manage().window().maximize();
     }
 
     @Test
-    void testEjemploSpotify(){
-        //Aqui crearemos el test
+    void test(){
+        driver.get("https://open.spotify.com/");
+        driver.manage().window().maximize();
         btnRegistrarse.click();
+
+        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+        inputEmail.sendKeys("lourdes.lede@tsoftlatam.com");
+        inputPassword.sendKeys("loudelmarlede");
+        try {
+            if (driver.findElement(By.xpath("//*[@id=\'confirm\']")).isDisplayed()) {
+                inputConfirmMail.sendKeys("lourdes.lede@tsoftlatam.com");
+            }
+        }catch (Exception e){
+
+        }
+        inputName.sendKeys("Lou");
+        inputDay.sendKeys("17");
+        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+        Select selectMonth = new Select(driver.findElement(By.xpath("//*[@name=\'month\']")));
+        selectMonth.selectByVisibleText("Febrero");
+        inputYear.sendKeys("1998");
+        ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView();", selectMujer);
+        selectMujer.click();
+
+        selectNoQuieroRecibirMensajes.click();
+
+        btnConfirmarRegistro.click();
+
+        if(driver.findElement(By.xpath("//*[@id=\"main\"]/div/div[2]/div[1]/header/button[1]")).isDisplayed()){
+            btnMejorarTuCuenta.click();
+        }
+
+
+
+        //driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+
+
     }
 
     @AfterEach
-    void posTests(){
+    void posTests() {
         //driver.close();
     }
 }

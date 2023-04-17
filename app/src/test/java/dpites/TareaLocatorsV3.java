@@ -12,8 +12,6 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class TareaLocatorsV3 {
 
-
-
     public static WebDriver driver;
 
     //@FindBy(name = )
