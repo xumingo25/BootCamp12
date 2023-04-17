@@ -30,8 +30,11 @@ class BrowserTest {
     @AfterEach
     void teardown() {driver.quit();}
 
+lñ<<<<<<< HEAD
 
 
+=======
+>>>>>>> 5e32b7e44e30e37c0446ea0fa56bf10484d10b3b
     @Test
     void test() {
         driver.get("https://www.google.com/");
@@ -57,6 +60,8 @@ class BrowserTest {
         //driver.manage().window().setSize(new Dimension(1920, 1080));
         //driver.manage().window().fullscreen();
    }
+
+
 
 }
 
