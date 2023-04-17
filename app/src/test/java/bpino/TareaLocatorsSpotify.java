@@ -15,6 +15,8 @@ import org.openqa.selenium.support.PageFactory;
 
 import java.util.concurrent.TimeUnit;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
 class TareaLocatorsSpotify {
     WebDriver driver;
     @FindBy(xpath = "//button[contains(text(),'Registrarte')]")
@@ -102,6 +104,12 @@ class TareaLocatorsSpotify {
         driver.manage().timeouts().implicitlyWait(15, TimeUnit.SECONDS);
 
         ingresar.submit();
+        //obtener boton
+        /*
+        String title = driver.get;
+        System.out.println("Titulo de pagina: "+title);
+        String titulo = "HOME - TSOFT - Make IT Real";
+        assertEquals(titulo, driver.getTitle());*/
 
     }
 }
