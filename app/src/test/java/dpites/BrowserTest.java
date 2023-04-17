@@ -30,9 +30,7 @@ class BrowserTest {
     @AfterEach
     void teardown() {driver.quit();}
 
-    void teardown() {
-        driver.quit();
-    }
+
 
     @Test
     void test() {

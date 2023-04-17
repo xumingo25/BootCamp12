@@ -1,13 +1,15 @@
 package veronicavelez;
 
+import io.github.bonigarcia.wdm.WebDriverManager;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 
-import io.github.bonigarcia.wdm.WebDriverManager;
 
 class ChromeTest {
 
@@ -24,26 +26,29 @@ class ChromeTest {
     }
 
     @AfterEach
-    void teardown() {
+    void teardown() throws InterruptedException {
         driver.quit();
     }
 
     @Test
-    void test() {
-        // Exercise
-        driver.get("https://www.google.com");
+    void test() throws InterruptedException {
+// Exercise
+
+        driver.get("https://www.google.com/");
+
+        driver.manage().window().maximize();
         String title = driver.getTitle();
+        System.out.println(title);
 
-        System.out.println("Titulo de pagina de google: "+ title);
 
-        driver.navigate().to("https://www.spotify.com");
+        WebElement barraDeGoogle = driver.findElement(By.xpath("//*[@id=\'APjFqb\']"));
+        barraDeGoogle.sendKeys("tsoft");
 
-        title = driver.getTitle();
+        barraDeGoogle.submit();
+        WebElement tsoftPagina = driver.findElement(By.xpath("//*[@id=\'rso\']/div[1]/div/div/div/div/div/div/div/div[1]/a/h3"));
 
-        System.out.println("Titulo de pagina de spotify: "+ title);
+        tsoftPagina.click();
 
-        // Verify
-        //assertThat(title).contains("Selenium WebDriver");
     }
-
 }
+
