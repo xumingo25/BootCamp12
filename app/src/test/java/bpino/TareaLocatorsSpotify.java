@@ -12,9 +12,10 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+
 import java.util.concurrent.TimeUnit;
 
-public class TareaLocatorsPino {
+class TareaLocatorsSpotify {
     WebDriver driver;
     @FindBy(xpath = "//button[contains(text(),'Registrarte')]")
     WebElement btnRegistrase;
