@@ -13,16 +13,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import java.util.concurrent.TimeUnit;
 
 class ChromeTest {
-
-
     WebDriver driver;
-
-
-    @BeforeAll
-    static void setupClass() {
-        WebDriverManager.chromedriver().setup();
-    }
-
 
     @BeforeAll
     static void setupClass() {
@@ -41,52 +32,23 @@ class ChromeTest {
 
     @Test
     void test() throws InterruptedException {
-        // Exercise
-        driver.get("https://www.google.com/");
+    // Exercise
+    driver.get("https://www.google.com/");
 
 
-        driver.manage().window().maximize();
-        String title = driver.getTitle();
-        System.out.println(title);
+    driver.manage().window().maximize();
+    String title = driver.getTitle();
+    System.out.println(title);
 
-        WebElement barraDeGoogle = driver.findElement(By.xpath("//*[@id=\'APjFqb\']"));
-        barraDeGoogle.sendKeys("tsoft");
+    WebElement barraDeGoogle = driver.findElement(By.xpath("//*[@id=\'APjFqb\']"));
+    barraDeGoogle.sendKeys("tsoft");
 
-        barraDeGoogle.submit();
-        WebElement tsoftPagina = driver.findElement(By.xpath("//*[@id=\'rso\']/div[1]/div/div/div/div/div/div/div/div[1]/a/h3"));
+    barraDeGoogle.submit();
+    WebElement tsoftPagina = driver.findElement(By.xpath("//*[@id=\'rso\']/div[1]/div/div/div/div/div/div/div/div[1]/a/h3"));
 
-        tsoftPagina.click();
-          // Verify
-          // assertThat(title).contains("Selenium WebDriver");
-        }
-
-
-    @BeforeAll
-    static void setupClass() {
-        WebDriverManager.chromedriver().setup();
+    tsoftPagina.click();
+      // Verify
+      // assertThat(title).contains("Selenium WebDriver");
     }
-
-
-
-    @BeforeEach
-    void setupTest() {
-        driver = new ChromeDriver();
-    }
-
-    @AfterEach
-    void teardown() {
-        driver.quit();
-    }
-
-    @Test
-    void test() {
-        // Exercise
-        driver.get("https://www.google.com/");
-        String title = driver.getTitle();
-        System.out.println(title);
-
-        // Verify
-        // assertThat(title).contains("Selenium WebDriver");
-    }
-
 }
+
