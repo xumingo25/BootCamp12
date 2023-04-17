@@ -1,6 +1,5 @@
 package gnieto;
 
-
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
@@ -12,7 +11,6 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 
 import java.util.concurrent.TimeUnit;
-
 
 class ChromeTest {
 
@@ -35,14 +33,12 @@ class ChromeTest {
 
     @Test
     void test() throws InterruptedException {
-// Exercise
-
+        // Exercise
         driver.get("https://www.google.com/");
 
         driver.manage().window().maximize();
         String title = driver.getTitle();
         System.out.println(title);
-
 
         WebElement barraDeGoogle = driver.findElement(By.xpath("//*[@id=\'APjFqb\']"));
         barraDeGoogle.sendKeys("tsoft");
@@ -51,7 +47,8 @@ class ChromeTest {
         WebElement tsoftPagina = driver.findElement(By.xpath("//*[@id=\'rso\']/div[1]/div/div/div/div/div/div/div/div[1]/a/h3"));
 
         tsoftPagina.click();
-// Verify
-// assertThat(title).contains("Selenium WebDriver");
+
+        // Verify
+        // assertThat(title).contains("Selenium WebDriver");
     }
 }
