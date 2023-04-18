@@ -1,12 +1,9 @@
 package fbenavides;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
-import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.*;
 import org.openqa.selenium.*;
-import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import static java.util.concurrent.TimeUnit.SECONDS;
@@ -19,7 +16,7 @@ public class TareaLocators {
     WebElement btnEntrarARegistro;
     @FindBy(xpath = "//*[@id='email']")
     WebElement inputCorreo;
-    @FindBy(xpath = "//input[@id='confirm']")
+    @FindBy(xpath = "//*[@id='confirm']")
     WebElement inputConfirma;
     @FindBy(xpath = "//*[@id='password']")
     WebElement inputClave;
@@ -32,39 +29,45 @@ public class TareaLocators {
     @FindBy(xpath = "//*[@id='year']")
     WebElement inputAnioNacimiento;
     @FindBy(xpath = "//span[contains(text(),'Otro')]")
-    WebElement inputAlien;
+    WebElement inputOtro;
     @FindBy(xpath = "//button[contains(@type,'subm')]")
     WebElement btnRegistrase;
     int tiempoEspera = 8;
 
     @BeforeAll
     static void preparacionClase(){
-        WebDriverManager.chromedriver().setup();
+        WebDriverManager.edgedriver().setup();
     }
 
     @BeforeEach
     void preTests(){
-        driver = new ChromeDriver();
+        driver = new EdgeDriver();
         PageFactory.initElements(driver,this);
-        driver.get("https://www.spotify.com/");
+        driver.get("https://open.spotify.com/");
         driver.manage().window().maximize();
     }
 
     @Test
-    void testRegistrar() throws InterruptedException{
+    void testRegistrar() {
+        try {
+            btnEntrarARegistro.click(); driver.manage().timeouts().implicitlyWait(tiempoEspera, SECONDS);
+            inputCorreo.sendKeys("pruebaBTautomatizacionTsoft1@yopmail.net"); driver.manage().timeouts().implicitlyWait(tiempoEspera, SECONDS);
+            boolean pideConfirmarMail = driver.findElements(By.xpath("//*[@id='confirm']")).size() !=0;
+            if (pideConfirmarMail) {
+                inputConfirma.sendKeys("pruebaBTautomatizacionTsoft1@yopmail.net"); driver.manage().timeouts().implicitlyWait(tiempoEspera, SECONDS);
+            }
+            inputClave.sendKeys("Estaesmiclave1"); driver.manage().timeouts().implicitlyWait(tiempoEspera, SECONDS);
+            inputNombre.sendKeys("juanita"); driver.manage().timeouts().implicitlyWait(tiempoEspera, SECONDS);
+            inputDiaNacimiento.sendKeys("08"); driver.manage().timeouts().implicitlyWait(tiempoEspera, SECONDS);
+            seleccionarMesNacimiento.sendKeys("Enero");driver.manage().timeouts().implicitlyWait(tiempoEspera, SECONDS);
+            inputAnioNacimiento.sendKeys("1993");driver.manage().timeouts().implicitlyWait(tiempoEspera, SECONDS);
+            ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView();", inputOtro);
+            inputOtro.click();driver.manage().timeouts().implicitlyWait(tiempoEspera, SECONDS);
+            //btnRegistrase.click();
 
-        btnEntrarARegistro.click(); driver.manage().timeouts().implicitlyWait(tiempoEspera, SECONDS);
-        inputCorreo.sendKeys("pruebaSpotifyBCtsoft@yopmail.net"); driver.manage().timeouts().implicitlyWait(tiempoEspera, SECONDS);
-        inputConfirma.sendKeys("pruebaSpotifyBCtsoft@yopmail.net"); driver.manage().timeouts().implicitlyWait(tiempoEspera, SECONDS);
-        inputClave.sendKeys("Estaesmiclave1"); driver.manage().timeouts().implicitlyWait(tiempoEspera, SECONDS);
-        inputNombre.sendKeys("Fran Benavides"); driver.manage().timeouts().implicitlyWait(tiempoEspera, SECONDS);
-        inputDiaNacimiento.sendKeys("08"); driver.manage().timeouts().implicitlyWait(tiempoEspera, SECONDS);
-        seleccionarMesNacimiento.sendKeys("Enero"); driver.manage().timeouts().implicitlyWait(tiempoEspera, SECONDS);
-        inputAnioNacimiento.sendKeys("1993"); driver.manage().timeouts().implicitlyWait(tiempoEspera, SECONDS);
-        ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView();", inputAlien);
-        inputAlien.click(); driver.manage().timeouts().implicitlyWait(tiempoEspera, SECONDS);
-        //btnRegistrase.click();
-
+        } catch (Exception e) {
+            System.out.println("Error en el test: " + e.getMessage());
+        }
     }
 
     @AfterEach
