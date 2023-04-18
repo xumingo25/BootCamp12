@@ -54,13 +54,8 @@ public class TareaLocators {
     void testRegistrar() throws InterruptedException{
 
         btnEntrarARegistro.click(); driver.manage().timeouts().implicitlyWait(tiempoEspera, SECONDS);
-        inputCorreo.sendKeys("pruebaSpotifyBootcamp12cl@yopmail.net"); driver.manage().timeouts().implicitlyWait(tiempoEspera, SECONDS);
-        boolean existeError = driver.findElements(By.xpath("//*[contains(text(),'Este correo electrónico ya está conectado a una cuenta.')]")).size() != 0;
-        if (!existeError) {
-            driver.manage().timeouts().implicitlyWait(tiempoEspera, SECONDS);
-            inputCorreo.sendKeys("pruebaSpotifyBootcamp2023@yopmail.net"); driver.manage().timeouts().implicitlyWait(tiempoEspera, SECONDS);
-            inputConfirma.sendKeys("pruebaSpotifyBootcamp2023@yopmail.net"); driver.manage().timeouts().implicitlyWait(tiempoEspera, SECONDS); }
-        inputConfirma.sendKeys("pruebaSpotifyBootcamp12cl@yopmail.net"); driver.manage().timeouts().implicitlyWait(tiempoEspera, SECONDS);
+        inputCorreo.sendKeys("pruebaSpotifyBCtsoft@yopmail.net"); driver.manage().timeouts().implicitlyWait(tiempoEspera, SECONDS);
+        inputConfirma.sendKeys("pruebaSpotifyBCtsoft@yopmail.net"); driver.manage().timeouts().implicitlyWait(tiempoEspera, SECONDS);
         inputClave.sendKeys("Estaesmiclave1"); driver.manage().timeouts().implicitlyWait(tiempoEspera, SECONDS);
         inputNombre.sendKeys("Fran Benavides"); driver.manage().timeouts().implicitlyWait(tiempoEspera, SECONDS);
         inputDiaNacimiento.sendKeys("08"); driver.manage().timeouts().implicitlyWait(tiempoEspera, SECONDS);
