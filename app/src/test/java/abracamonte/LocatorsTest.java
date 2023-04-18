@@ -6,17 +6,23 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.util.concurrent.TimeUnit;
 
 
 public class LocatorsTest {
     WebDriver driver;
+    JavascriptExecutor js;
+
+    WebDriverWait wait;
 
     @FindBy(xpath = "//button[contains(text(), 'Registra')]")
     WebElement btnRegistrarse;
@@ -27,43 +33,34 @@ public class LocatorsTest {
     }
 
     @BeforeEach
-    void setupTest() {
+    void preTest() {
         driver = new ChromeDriver();
-    }
+        js = (JavascriptExecutor) driver;
+        wait = new WebDriverWait(driver, 10);
 
-    @AfterEach
-    void teardown() {
-        driver.quit();
+        PageFactory.initElements(driver, this);
+        driver.get("https://www.spotify.com/cl");
+
+        driver.manage().window().maximize();
+        driver.manage().timeouts().pageLoadTimeout(15, TimeUnit.SECONDS);
+        driver.manage().timeouts().implicitlyWait(15, TimeUnit.SECONDS);
+
     }
 
     @Test
-    void test() {
-        // Exercise
-        PageFactory.initElements(driver, this);
-        driver.get("https://www.spotify.com/cl");
-        // Esperar a que se cargue la página de resultados
-        try {
+    void test_CP001_LlenarFormulario_IngresoSpotify() {
 
-            Thread.sleep(5000); // Esperar 5 segundos
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
 
         String title = driver.getTitle();
+
         System.out.println("Este es el titulo de la pagina: " + title);
 
-        driver.manage().window().maximize();
+
+        wait.until(ExpectedConditions.elementToBeClickable(btnRegistrarse));
 
         btnRegistrarse.click();
 
 
-        // Esperar a que se cargue la página de resultados
-        try {
-
-            Thread.sleep(10000); // Esperar 10 segundos
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
 
         WebElement inputEmail = driver.findElement(By.xpath("//input[contains(@placeholder, 'Pon tu correo electr')]"));
         inputEmail.sendKeys("elcorreo@email.com");
@@ -94,47 +91,26 @@ public class LocatorsTest {
         WebElement yearNac = driver.findElement(By.xpath("//input[contains(@placeholder, 'AAAA')]"));
         yearNac.sendKeys("1994");
 
-        // Esperar a que se cargue la página de resultados
-        try {
 
-            Thread.sleep(5000); // Esperar 5 segundos
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-
-        WebElement female= driver.findElement(By.xpath("//label[contains(@for, 'gender_option_female')]"));
+        WebElement female= wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//label[contains(@for, 'gender_option_female')]")));
+        js.executeScript("arguments[0].scrollIntoView(true);", female);
         female.click();
 
 
-        WebElement noMarket = driver.findElement(By.xpath("//label[contains(@for, 'marketing-opt-checkbox')]"));
+        WebElement noMarket = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//label[contains(@for, 'marketing-opt-checkbox')]")));
         noMarket.click();
 
-        // Esperar a que se cargue la página de resultados
-        try {
 
-            Thread.sleep(3000); // Esperar 3 segundos
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-
-
-        WebElement compartirDatos = driver.findElement(By.xpath("//label[contains(@for, 'third-party-checkbox')]"));
+        WebElement compartirDatos = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//label[contains(@for, 'third-party-checkbox')]")));
         compartirDatos.click();
-
-
-        // Esperar a que se cargue la página de resultados
-        try {
-
-            Thread.sleep(5000); // Esperar 5 segundos
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-
 
         title = driver.getTitle();
         System.out.println("Titulo de pagina: "+ title);
 
 
-
+    }
+    @AfterEach
+    void afterTest() {
+        driver.quit();
     }
 }
