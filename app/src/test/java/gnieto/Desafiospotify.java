@@ -11,14 +11,30 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.JavascriptExecutor;
+import java.util.concurrent.TimeUnit;
 
- class desafioSpotify {
+class DesafioSpotify {
 
     WebDriver driver;
 
     @FindBy(xpath = "//button[contains(text(),'Registra')]")
     WebElement btnRegistrase;
 
+    @FindBy(xpath = "//span[contains(text(),'Prefiero no responder')]")
+    WebElement genero;
+    @FindBy(xpath = "//*[@id='__next']/main/div/div/form/div[8]/div/button/span[1]")
+    WebElement ingresar;
+
+    @FindBy(xpath = "//*[@id=\"__next\"]/main/div/div/form/div[5]/div/label/span[1]")
+    WebElement Noquiero;
+
+    @FindBy(xpath = "//*[@id=\"__next\"]/main/div/div/form/div[7]/div/button/span[1]")
+    WebElement registrarse;
+
+
+    //@FindBy(xpath = "//*[@id=\"main\"]/div/div[2]/div[1]/header/button[1]")
+  //  WebElement mejorar;
 
 
     @BeforeAll
@@ -39,17 +55,23 @@ import org.openqa.selenium.support.PageFactory;
     @Test
     void testEjemploSpotify() throws InterruptedException {
 
-        //Aqui crearemos el test
+//Aqui crearemos el test
         btnRegistrase.click();
         Thread.sleep(5000);
 
 // Crear usuario con correo electrónico
         WebElement email = driver.findElement(By.xpath("//*[@id=\"email\"]"));
-        email.sendKeys("usuario1-guada@algo.com");
+        email.sendKeys("57-guada@algo.com");
 
-// Confirmación de correo electrónico
+
+        // Confirmación de correo electrónico
         WebElement confirmEmail = driver.findElement(By.xpath("//*[@id=\"confirm\"]"));
-        confirmEmail.sendKeys("usuario1-guada@algo.com");
+        confirmEmail.sendKeys("57-guada@algo.com");
+
+// Cerrar cuadro de dialogo de las cookies
+        WebElement cache = driver.findElement(By.xpath("//*[@id=\"onetrust-close-btn-container\"]/button"));
+        cache.click();
+
 
 // Contraseña
         WebElement password = driver.findElement(By.xpath("//*[@id=\"password\"]"));
@@ -67,24 +89,40 @@ import org.openqa.selenium.support.PageFactory;
         WebElement birthYear = driver.findElement(By.xpath("//*[@id=\"year\"]"));
         birthYear.sendKeys("1992"); // Selecciona el año de nacimiento
 
-// Aquí selecciona mi género
-        WebElement Mujer = driver.findElement(By.xpath("//*[@id=\"__next\"]/main/div/div/form/fieldset/div/div[2]/label/span[2]"));
-        Mujer.click();
 
-// Aquí selecciona el check button "No quiero recibir notificaciones de Marketing de Spotify"
-        WebElement Noquiero = driver.findElement(By.xpath("//*[@id=\"__next\"]/main/div/div/form/div[6]/div/label/span[2]"));
-        Noquiero.click();
+        ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView();", genero);
 
-// Aquí doy clic en el botón "No compartir datos con los proveedores de sp"
-        WebElement Nocompartir = driver.findElement(By.xpath("//*[@id=\"__next\"]/main/div/div/form/div[6]/div/label/span[2]"));
 
-// Aquí hacemos clic en el botón "Registrarse"
+        genero.click();
+        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+
+
+        ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView();", Noquiero);
+        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+
+       // WebElement mejora = driver.findElement(By.xpath("//*[@id=\"main\"]/div/div[2]/div[1]/header/button[1]"));
+
+
+        // Aquí hacemos clic en el botón "Registrarse"
         WebElement registrarse = driver.findElement(By.xpath("//*[@id=\"__next\"]/main/div/div/form/div[8]/div/button/span[1]"));
+
+
+        Noquiero.click();
+        ingresar.submit();
         registrarse.click();
+
+
+
+      //  mejorar.click();
+
+
     }
+
+
+
 
     @AfterEach
     void posTests() {
-        driver.close();
+        //driver.close();
     }
 }
