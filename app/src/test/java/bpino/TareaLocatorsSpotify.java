@@ -5,11 +5,8 @@ import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.openqa.selenium.By;
+import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.JavascriptExecutor;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
@@ -26,19 +23,25 @@ class TareaLocatorsSpotify {
     @FindBy(xpath = "//*[@id=\'confirm\']")
     WebElement correoConfirmar;
     @FindBy(xpath = "//*[@id=\'password\']")
-    WebElement contrasena;
+    WebElement pass;
     @FindBy(xpath = "//*[@id='displayname']")
     WebElement nombre;
     @FindBy(xpath = "//*[@id=\'day\']")
-    WebElement dia;
+    WebElement day;
     @FindBy(xpath = "//*[@id=\'month\']")
-    WebElement mes;
+    WebElement month;
     @FindBy(xpath = "//*[@id=\'year\']")
-    WebElement anio;
+    WebElement year;
     @FindBy(xpath = "//span[contains(text(),'Otro')]")
-    WebElement genero;
-    @FindBy(xpath = "//*[@id=\'__next\']/main/div/div/form/div[8]/div/button/span[1]")
-    WebElement ingresar;
+    WebElement other;
+    @FindBy(xpath = "//label[contains(@for,'marketing-opt-checkbox')]")
+    WebElement marketing;
+    @FindBy(xpath = "//button[@type='submit']")
+    WebElement submit;
+    @FindBy(xpath = "//span[contains(text(),'Tu biblioteca')]")
+    WebElement find;
+    String biblioteca = "Tu biblioteca";
+
 
     @BeforeAll
     static void setupClass() {
@@ -49,7 +52,7 @@ class TareaLocatorsSpotify {
     void setupTest() {
         driver = new ChromeDriver();
         PageFactory.initElements(driver, this);
-        driver.get("https://open.spotify.com/");
+        driver.get("https://www.spotify.com/");
         driver.manage().window().maximize();
     }
 
@@ -61,55 +64,38 @@ class TareaLocatorsSpotify {
 
     @Test
     void test() throws InterruptedException {
-
-
         btnRegistrase.click();
-
         driver.manage().timeouts().implicitlyWait(15, TimeUnit.SECONDS);
-
-
-        correo.sendKeys("pajaritos123@pio.com");
-
+        correo.sendKeys("pajaritos.musicales@pio.com");
         driver.manage().timeouts().implicitlyWait(15, TimeUnit.SECONDS);
         boolean exists = driver.findElements(By.xpath("//*[@id=\'confirm\']")).size() != 0;
 
         if (exists) {
             driver.manage().timeouts().implicitlyWait(15, TimeUnit.SECONDS);
-            correoConfirmar.sendKeys("pajaritos123@pio.com");
+            correoConfirmar.sendKeys("pajaritos.musicales@pio.com");
             driver.manage().timeouts().implicitlyWait(15, TimeUnit.SECONDS);
 
         }
 
-        contrasena.sendKeys("PajaritoConChaleco12");
-
-        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-
-
+        pass.sendKeys("PajaritoConChaleco12");
+        driver.manage().timeouts().implicitlyWait(15, TimeUnit.SECONDS);
         nombre.sendKeys("Piopio");
-        driver.manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS);
-
-        dia.sendKeys("22");
-
         driver.manage().timeouts().implicitlyWait(15, TimeUnit.SECONDS);
-        mes.sendKeys("Agosto");
+        day.sendKeys("22");
         driver.manage().timeouts().implicitlyWait(15, TimeUnit.SECONDS);
-
-        anio.sendKeys("1993");
+        month.sendKeys("Agosto");
         driver.manage().timeouts().implicitlyWait(15, TimeUnit.SECONDS);
-
-        ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView();", genero);
-
-
-        genero.click();
+        year.sendKeys("1993");
         driver.manage().timeouts().implicitlyWait(15, TimeUnit.SECONDS);
-
-        ingresar.submit();
-        //obtener boton
-        /*
-        String title = driver.get;
-        System.out.println("Titulo de pagina: "+title);
-        String titulo = "HOME - TSOFT - Make IT Real";
-        assertEquals(titulo, driver.getTitle());*/
-
+        ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView();", other);
+        other.click();
+        driver.manage().timeouts().implicitlyWait(15, TimeUnit.SECONDS);
+        marketing.click();
+        driver.manage().timeouts().implicitlyWait(15, TimeUnit.SECONDS);
+        submit.submit();
+        driver.manage().timeouts().implicitlyWait(15, TimeUnit.SECONDS);
+        find.getText();
+        System.out.println(find.getText());
+        assertEquals(biblioteca, find.getText());
     }
 }
