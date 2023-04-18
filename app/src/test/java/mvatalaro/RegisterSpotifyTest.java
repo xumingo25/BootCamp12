@@ -1,12 +1,17 @@
 package mvatalaro;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
-import org.junit.jupiter.api.*;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+
+import java.util.concurrent.TimeUnit;
 
 public class RegisterSpotifyTest {
 
@@ -83,19 +88,35 @@ public class RegisterSpotifyTest {
         //Aqui crearemos el test
         btnRegistrarse.click();
 
-        inputEmail.getText();
+        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 
-        inputConfirmEmail.getText();
+        inputEmail.sendKeys("musicalizate_on@gmail.com");
 
-        inputPassword.sendKeys();
+        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 
-        inputUserName.getText();
 
-        inputDiaNacimiento.getText();
+        inputConfirmEmail.sendKeys("musicalizate_on@gmail.com");
 
-        inputMesNacimiento.isDisplayed();
+        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 
-        inputAnioNacimiento.getText();
+        inputPassword.sendKeys("Musica2023");
+
+        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+
+
+        inputUserName.sendKeys("Eleven18");
+
+        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+
+
+        inputDiaNacimiento.sendKeys("18");
+        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+
+        inputMesNacimiento.sendKeys("Abril");
+        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+
+        inputAnioNacimiento.sendKeys("1999");
+        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 
         selectorHombre.isSelected();
 
@@ -106,10 +127,12 @@ public class RegisterSpotifyTest {
         selectorOtro.isSelected();
 
         selectorNoresponder.isSelected();
+        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 
         tildeNotificacion.isEnabled();
 
         tildeCompartirDatos.isEnabled();
+        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 
         btnRegistrate.submit();
 
