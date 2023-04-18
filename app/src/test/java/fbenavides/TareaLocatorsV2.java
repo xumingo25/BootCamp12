@@ -9,6 +9,8 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import java.util.concurrent.TimeUnit;
 
+import static java.util.concurrent.TimeUnit.SECONDS;
+
 public class TareaLocatorsV2 {
     // Se crean variables para el driver, el wait y el tiempo limite de espera
     WebDriver driver;
@@ -82,7 +84,10 @@ public class TareaLocatorsV2 {
                 break; //Si no hay error se sale
             }
         }
-        inputConfirma.sendKeys(email); //Se re-utiliza la variabnle email
+        boolean pideConfirmarMail = driver.findElements(By.xpath("//*[@id='confirm']")).size() !=0;
+        if (pideConfirmarMail) {
+            inputConfirma.sendKeys(email);
+        }
         //De aqui en adelante, se agregan todos los demas datos que funcionan bien :(
         inputClave.sendKeys("Estaesmiclave1");
         inputNombre.sendKeys("Fran Benavides");
