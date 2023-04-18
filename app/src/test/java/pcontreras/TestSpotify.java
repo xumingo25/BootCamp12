@@ -8,7 +8,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
-public class TareaLocators {
+class TareaLocators {
     WebDriver driver;
 
     @FindBy(xpath = "//button[contains(text(),'Registra')]")
