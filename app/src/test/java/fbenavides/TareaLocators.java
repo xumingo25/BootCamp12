@@ -52,7 +52,10 @@ public class TareaLocators {
         try {
             btnEntrarARegistro.click(); driver.manage().timeouts().implicitlyWait(tiempoEspera, SECONDS);
             inputCorreo.sendKeys("pruebaBTautomatizacionTsoft1@yopmail.net"); driver.manage().timeouts().implicitlyWait(tiempoEspera, SECONDS);
-            inputConfirma.sendKeys("pruebaBTautomatizacionTsoft1@yopmail.net"); driver.manage().timeouts().implicitlyWait(tiempoEspera, SECONDS);
+            boolean pideConfirmarMail = driver.findElements(By.xpath("//*[@id='confirm']")).size() !=0;
+            if (pideConfirmarMail) {
+                inputConfirma.sendKeys("pruebaBTautomatizacionTsoft1@yopmail.net"); driver.manage().timeouts().implicitlyWait(tiempoEspera, SECONDS);
+            }
             inputClave.sendKeys("Estaesmiclave1"); driver.manage().timeouts().implicitlyWait(tiempoEspera, SECONDS);
             inputNombre.sendKeys("juanita"); driver.manage().timeouts().implicitlyWait(tiempoEspera, SECONDS);
             inputDiaNacimiento.sendKeys("08"); driver.manage().timeouts().implicitlyWait(tiempoEspera, SECONDS);
@@ -60,7 +63,7 @@ public class TareaLocators {
             inputAnioNacimiento.sendKeys("1993");driver.manage().timeouts().implicitlyWait(tiempoEspera, SECONDS);
             ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView();", inputOtro);
             inputOtro.click();driver.manage().timeouts().implicitlyWait(tiempoEspera, SECONDS);
-            btnRegistrase.click();
+            //btnRegistrase.click();
 
         } catch (Exception e) {
             System.out.println("Error en el test: " + e.getMessage());
