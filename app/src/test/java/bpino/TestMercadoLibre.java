@@ -1,10 +1,7 @@
 package bpino;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
-import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.*;
 import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.PageFactory;
@@ -76,6 +73,7 @@ public class TestMercadoLibre {
         try {
             locatorTxtMasCategorias = By.xpath("//a[contains(text(),'Ver m\u00e1s categor\u00edas')]");
             txtMasCategorias= wait.until(ExpectedConditions.presenceOfElementLocated(locatorTxtMasCategorias));
+            js.executeScript("arguments[0].scrollIntoView(true);", txtMasCategorias);
             txtMasCategorias.click();
         } catch (Exception e) {
             System.out.println("ha ocurrido un error al obtener el elemento web con el locator "+ locatorTxtMasCategorias.toString());
@@ -106,13 +104,49 @@ public class TestMercadoLibre {
         try {
             locatorInputBuscar = By.xpath("//input[@id='cb1-edit']");
             inputBuscar= wait.until(ExpectedConditions.presenceOfElementLocated(locatorInputBuscar));
-            inputBuscar.sendKeys("Bastones",(Keys.ENTER));
+            inputBuscar.sendKeys("Bastones",(Keys.RETURN));
 
         } catch (Exception e) {
             System.out.println("ha ocurrido un error al obtener el elemento web con el locator "+ locatorInputBuscar.toString());
         }
 
+        By locatorTxtProducto = null;
+        WebElement txtProducto = null;
+        try {
+            locatorTxtProducto = By.xpath("//h2[contains(text(),'Bastones De Trekking 2 Unidades Par Ajustable Aluminio 7075')]");
+            txtProducto= wait.until(ExpectedConditions.elementToBeClickable(locatorTxtProducto));
+            js.executeScript("arguments[0].scrollIntoView(true);", txtProducto);
+            txtProducto.click();
 
+        } catch (Exception e) {
+            System.out.println("ha ocurrido un error al obtener el elemento web con el locator "+ locatorTxtProducto.toString());
+        }
+
+        By locatorTxtComprar= null;
+        WebElement txtComprar = null;
+        try {
+            locatorTxtComprar = By.xpath("//span[contains(text(),'Comprar ahora')]");
+            txtComprar= wait.until(ExpectedConditions.elementToBeClickable(locatorTxtComprar));
+            js.executeScript("arguments[0].scrollIntoView(true);", txtComprar);
+            txtComprar.click();
+
+        } catch (Exception e) {
+            System.out.println("ha ocurrido un error al obtener el elemento web con el locator "+ locatorTxtComprar.toString());
+        }
+        String resultadoEsperado = null;
+        WebElement texto = null;
+        try {
+            resultadoEsperado= "\u00A1Hola! Para comprar, ingresa a tu cuenta";
+
+            texto = wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//h1[contains(text(),'\u00A1Hola! Para comprar, ingresa a tu cuenta')]")));
+
+            Assertions.assertEquals(resultadoEsperado,texto.getText());
+
+            System.out.println("Test finalizado");
+
+        }catch (Exception e){
+            System.out.println("No se ha encontrado el texto esperado");
+        }
 
 
     }
