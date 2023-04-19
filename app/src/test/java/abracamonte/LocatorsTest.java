@@ -1,5 +1,6 @@
 package abracamonte;
 
+import com.sun.rowset.internal.WebRowSetXmlReader;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
@@ -57,52 +58,117 @@ public class LocatorsTest {
 
 
         wait.until(ExpectedConditions.elementToBeClickable(btnRegistrarse));
-
         btnRegistrarse.click();
 
 
-
-        WebElement inputEmail = driver.findElement(By.xpath("//input[contains(@placeholder, 'Pon tu correo electr')]"));
-        inputEmail.sendKeys("elcorreo@email.com");
+        By locatorCorreo= null;
+        WebElement inputEmail;
+        try{
+            locatorCorreo = By.xpath("//input[contains(@placeholder, 'Pon tu correo electr')]");
+            inputEmail = wait.until((ExpectedConditions.presenceOfElementLocated(locatorCorreo)));
+            inputEmail.sendKeys("elcorreo@email.com");
+        }catch (Exception e){
+            System.out.println("Ocurrió un error al obtener el elemento con el locator: " + locatorCorreo.toString());
+        }
 
 
         boolean siAparece = driver.findElements(By.xpath("//input[contains(@placeholder, 'Vuelve a poner tu correo electr')]")).size() !=0;
         if (siAparece) {
-            WebElement inputEmail2 = driver.findElement(By.xpath("//input[contains(@placeholder, 'Vuelve a poner tu correo electr')]"));
-            inputEmail2.sendKeys("elcorreo@email.com");
+            WebElement inputEmail2;
+            By locatorCorreo2=null;
+            try {
+                locatorCorreo2= By.xpath("//input[contains(@placeholder, 'Vuelve a poner tu correo electr')]");
+                inputEmail2 = wait.until(ExpectedConditions.presenceOfElementLocated(locatorCorreo2));
+                inputEmail2.sendKeys("elcorreo@email.com");
+            }catch (Exception e){
+                System.out.println("No se pudo obterer el elemento con el locator: " + locatorCorreo2.toString());
+            }
         }
 
-        WebElement creaPassword = driver.findElement(By.xpath("//input[contains(@placeholder, 'Crea una contrase')]"));
-        creaPassword.sendKeys("Clave1234**");
+
+        By locatorPass=null;
+        WebElement creaPassword;
+        try {
+            locatorPass=By.xpath("//input[contains(@placeholder, 'Crea una contrase')]");
+            creaPassword = wait.until(ExpectedConditions.presenceOfElementLocated(locatorPass));
+            creaPassword.sendKeys("Clave1234**");
+        }catch (Exception e){
+            System.out.println("No se pudo obterer el elemento con el locator: " + locatorPass.toString());
+        }
+
+        By locatorNombre=null;
+        WebElement creaNombre;
+        try {
+            locatorNombre=By.xpath("//input[contains(@placeholder, 'Pon un nombre de perfil')]");
+            creaNombre=wait.until(ExpectedConditions.presenceOfElementLocated(locatorNombre));
+            creaNombre.sendKeys("Mi nombre");
+        }catch (Exception e){
+            System.out.println("No se pudo obterer el elemento con el locator: " + locatorNombre.toString());
+        }
 
 
-        WebElement creaNombre = driver.findElement(By.xpath("//input[contains(@placeholder, 'Pon un nombre de perfil')]"));
-        creaNombre.sendKeys("Mi nombre");
+        By locatorDia=null;
+        WebElement diaNac;
+        try{
+            locatorDia=By.xpath("//input[contains(@placeholder, 'DD')]");
+            diaNac = wait.until(ExpectedConditions.presenceOfElementLocated(locatorDia));
+            diaNac.sendKeys("12");
+        }catch (Exception e){
+        System.out.println("No se pudo obterer el elemento con el locator: " + locatorDia.toString());
+        }
 
+        By locatorMes=null;
+        WebElement mesNac;
+        try {
+            locatorMes=By.xpath("//select[contains(@name, 'month')]");
+            mesNac = wait.until(ExpectedConditions.presenceOfElementLocated(locatorMes));
+            mesNac.sendKeys("Abril");
+        }catch (Exception e){
+            System.out.println("No se pudo obterer el elemento con el locator: " + locatorMes.toString());
+        }
 
-        WebElement diaNac = driver.findElement(By.xpath("//input[contains(@placeholder, 'DD')]"));
-        diaNac.sendKeys("12");
+        By locatorYear=null;
+        WebElement yearNac;
+        try {
+            locatorYear=By.xpath("//input[contains(@placeholder, 'AAAA')]");
+            yearNac = wait.until(ExpectedConditions.presenceOfElementLocated(locatorYear));
+            yearNac.sendKeys("1994");
+        }catch (Exception e){
+            System.out.println("No se pudo obterer el elemento con el locator: " + locatorYear.toString());
+        }
 
+        By locatorFemale=null;
+        WebElement female;
 
-        WebElement mesNac = driver.findElement(By.xpath("//select[contains(@name, 'month')]"));
-        mesNac.sendKeys("Abril");
+        try {
+            locatorFemale=By.xpath("//label[contains(@for, 'gender_option_female')]");
+            female= wait.until(ExpectedConditions.elementToBeClickable(locatorFemale));
+            js.executeScript("arguments[0].scrollIntoView(true);", female);
+            female.click();
+        }catch (Exception e){
+            System.out.println("No se pudo obterer el elemento con el locator: " + locatorFemale.toString());
+        }
 
+        By locatorMarket=null;
+        WebElement noMarket;
+        try {
+            locatorMarket=By.xpath("//label[contains(@for, 'marketing-opt-checkbox')]");
+            noMarket = wait.until(ExpectedConditions.elementToBeClickable(locatorMarket));
+            noMarket.click();
+        }catch (Exception e){
+            System.out.println("No se pudo obterer el elemento con el locator: " + locatorMarket.toString());
+        }
 
-        WebElement yearNac = driver.findElement(By.xpath("//input[contains(@placeholder, 'AAAA')]"));
-        yearNac.sendKeys("1994");
+        By locatorDatos=null;
+        WebElement compartirDatos;
+        try {
+            locatorDatos=By.xpath("//label[contains(@for, 'third-party-checkbox')]");
+            compartirDatos = wait.until(ExpectedConditions.elementToBeClickable(locatorDatos));
+            compartirDatos.click();
+        }catch (Exception e){
+            System.out.println("No se pudo obterer el elemento con el locator: " + locatorDatos.toString());
+        }
 
-
-        WebElement female= wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//label[contains(@for, 'gender_option_female')]")));
-        js.executeScript("arguments[0].scrollIntoView(true);", female);
-        female.click();
-
-
-        WebElement noMarket = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//label[contains(@for, 'marketing-opt-checkbox')]")));
-        noMarket.click();
-
-
-        WebElement compartirDatos = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//label[contains(@for, 'third-party-checkbox')]")));
-        compartirDatos.click();
 
         title = driver.getTitle();
         System.out.println("Titulo de pagina: "+ title);
