@@ -10,7 +10,6 @@ import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -74,6 +73,28 @@ public class TestMercadoLibre {
         } catch (Exception e) {
             System.out.println("ha ocurrido un error al obtener el elemento web con el locator "+ locatorTxtCategorias.toString());
         }
+
+        By locatorTxtMasCategorias = null;
+        WebElement txtMasCategorias = null;
+        try {
+            locatorTxtMasCategorias = By.xpath("//a[contains(text(),'Ver m\u00e1s categor\u00edas')]");
+            txtMasCategorias= wait.until(ExpectedConditions.presenceOfElementLocated(locatorTxtMasCategorias));
+            txtMasCategorias.click();
+        } catch (Exception e) {
+            System.out.println("ha ocurrido un error al obtener el elemento web con el locator "+ locatorTxtMasCategorias.toString());
+        }
+
+        By locatorTxtMusica = null;
+        WebElement txtMusica = null;
+        try {
+            locatorTxtMusica = By.xpath("//h3[contains(text(),'M\u00fasica')]");
+            txtMusica= wait.until(ExpectedConditions.presenceOfElementLocated(locatorTxtMusica));
+            js.executeScript("arguments[0].scrollIntoView(true);", txtMusica);
+            txtMusica.click();
+        } catch (Exception e) {
+            System.out.println("ha ocurrido un error al obtener el elemento web con el locator "+ locatorTxtMusica.toString());
+        }
+
 
 
     }
