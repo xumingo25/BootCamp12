@@ -12,8 +12,6 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
-import static java.util.concurrent.TimeUnit.SECONDS;
-
 public class TareaLocatorsV2 {
     WebDriver driver; //Creación de atributo WebDriver
     WebDriverWait wait;
@@ -52,7 +50,7 @@ public class TareaLocatorsV2 {
     }
 
     @Test
-    void CP001_CreacionCtaSpotify_NOOK_CorreoYaIngresado() throws InterruptedException {
+    void CP001_CreacionCtaSpotify_NOOK_CorreoYaIngresado() {
 
         btnEntrarARegistro.click();
 
@@ -60,7 +58,7 @@ public class TareaLocatorsV2 {
         String correo = "pruebaSpotifyBootcamp12cl@yopmail.net";
         txtCorreo.sendKeys(correo);
 
-        WebElement txtConfirmarCorreo = null;
+        WebElement txtConfirmarCorreo;
         try {
             txtConfirmarCorreo = driver.findElement(locatorConfirmarCorreo);
             txtConfirmarCorreo.sendKeys(correo);
@@ -69,7 +67,7 @@ public class TareaLocatorsV2 {
         }
 
         String contrasena = "Estaesmiclaveasies1";
-        WebElement txtPassword = null;
+        WebElement txtPassword;
         try {
             txtPassword = driver.findElement(locatorPassword);
             txtPassword.sendKeys(contrasena);
@@ -78,7 +76,7 @@ public class TareaLocatorsV2 {
         }
 
         String nombrePerfil = "Mi nombre";
-        WebElement txtNombrePerfil = null;
+        WebElement txtNombrePerfil;
         try {
             txtNombrePerfil = wait.until(ExpectedConditions.presenceOfElementLocated(locatorNombrePerfil));
             txtNombrePerfil.sendKeys(nombrePerfil);
@@ -87,7 +85,7 @@ public class TareaLocatorsV2 {
         }
 
         String dia = "08";
-        WebElement txtDia = null;
+        WebElement txtDia;
         try {
             txtDia = wait.until(ExpectedConditions.presenceOfElementLocated(locatorDia));
             txtDia.sendKeys(dia);
@@ -96,7 +94,7 @@ public class TareaLocatorsV2 {
         }
 
         String mes = "01";
-        WebElement ddlMes = null;
+        WebElement ddlMes;
         try {
             ddlMes = wait.until(ExpectedConditions.presenceOfElementLocated(locatorMes));
             Select selectorMes = new Select(ddlMes);
@@ -106,7 +104,7 @@ public class TareaLocatorsV2 {
         }
 
         String annio = "1993";
-        WebElement txtAnnio = null;
+        WebElement txtAnnio;
         try {
             txtAnnio = wait.until(ExpectedConditions.presenceOfElementLocated(locatorAnnio));
             txtAnnio.sendKeys(annio);
@@ -114,7 +112,7 @@ public class TareaLocatorsV2 {
             System.out.println("ocurrio un error al obtener el elemento web con el locator " + locatorAnnio.toString());
         }
 
-        List<WebElement> generos = null;
+        List<WebElement> generos;
         try {
             generos = wait.until(ExpectedConditions.presenceOfAllElementsLocatedBy(locatorGeneros));
 
@@ -127,7 +125,7 @@ public class TareaLocatorsV2 {
             System.out.println("ocurrio un error al obtener el elemento web con el locator " + locatorGeneros.toString());
         }
 
-        List<WebElement> checks = null;
+        List<WebElement> checks;
         try {
             checks = wait.until(ExpectedConditions.presenceOfAllElementsLocatedBy(locatorChecks));
 
@@ -141,7 +139,7 @@ public class TareaLocatorsV2 {
         }
 
 
-        WebElement btnConfirmar = null;
+        WebElement btnConfirmar;
 
         try {
             btnConfirmar = wait.until(ExpectedConditions.presenceOfElementLocated(locatorBtnConfirmar));
@@ -161,12 +159,10 @@ public class TareaLocatorsV2 {
 
         Assertions.assertEquals(resultadoEsperado, resultadoActual);
 
-
     }
 
-
     @AfterEach
-    void teardown() throws InterruptedException {
+    void teardown() {
         // driver.quit();
     }
 }
