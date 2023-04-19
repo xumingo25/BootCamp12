@@ -6,54 +6,36 @@ import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.*;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
+
+import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 import static java.util.concurrent.TimeUnit.SECONDS;
 
 public class TareaLocatorsV2 {
-    // Se crean variables para el driver, el wait y el tiempo limite de espera
-    WebDriver driver;
+    WebDriver driver; //Creación de atributo WebDriver
     WebDriverWait wait;
-    static final int TIMEOUT_SECONDS = 10;
+    JavascriptExecutor js;
 
     @FindBy(xpath = "//button[contains(text(),'Registra')]")
     WebElement btnEntrarARegistro;
-
-    @FindBy(xpath = "//*[@id='email']")
-    WebElement inputCorreo;
-
-    @FindBy(xpath = "//input[@id='confirm']")
-    WebElement inputConfirma;
-
-    @FindBy(xpath = "//*[@id='password']")
-    WebElement inputClave;
-
-    @FindBy(xpath = "//*[@id='displayname']")
-    WebElement inputNombre;
-
-    @FindBy(xpath = "//*[@id='day']")
-    WebElement inputDiaNacimiento;
-
-    @FindBy(xpath = "//*[@id='month']")
-    WebElement seleccionarMesNacimiento;
-
-    @FindBy(xpath = "//*[@id='year']")
-    WebElement inputAnioNacimiento;
-
-    @FindBy(xpath = "//span[contains(text(),'Otro')]")
-    WebElement inputGenero;
-
-    @FindBy(xpath = "//button[contains(@type,'subm')]")
-    WebElement btnRegistrase;
-
-
-    @FindBy(xpath = "//*[contains(text(),'Este correo electrónico no es válido.')]")
-    WebElement errorCorreoInvalido; // Se define la variable para el mensaje de error "Correo electrónico no válido"
+    By locatorTxtCorreo = By.xpath("//input[@id='email']");
+    By locatorConfirmarCorreo = By.xpath("//input[@name='confirm']");
+    By locatorPassword = By.xpath("//input[@type=\"password\"]");
+    By locatorNombrePerfil = By.xpath("//input[@id='displayname']");
+    By locatorDia = By.xpath("//input[@name='day']");
+    By locatorMes = By.xpath("//select");
+    By locatorAnnio = By.xpath("//input[@name='year']");
+    By locatorGeneros = By.xpath("//label[contains(@for,'gender')]");
+    By locatorChecks = By.xpath("//label[contains(@for,'checkbox')]");
+    By locatorBtnConfirmar = By.xpath("//button[@type=\"submit\"]");
 
 
     @BeforeAll
     static void preparacionClase() {
+        System.setProperty("file.encoding", "UTF-8");
         WebDriverManager.chromedriver().setup();
     }
 
@@ -62,43 +44,127 @@ public class TareaLocatorsV2 {
         driver = new ChromeDriver();
         PageFactory.initElements(driver, this);
         driver.get("https://open.spotify.com/");
+        wait = new WebDriverWait(driver, 10);
+        js = (JavascriptExecutor) driver;
         driver.manage().window().maximize();
-        wait = new WebDriverWait(driver, TIMEOUT_SECONDS);
+        driver.manage().timeouts().pageLoadTimeout(10, TimeUnit.SECONDS);
+        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
     }
 
     @Test
-    void testRegistrar() {
+    void CP001_CreacionCtaSpotify_NOOK_CorreoYaIngresado() throws InterruptedException {
+
         btnEntrarARegistro.click();
-        wait.until(ExpectedConditions.visibilityOf(inputCorreo)); // Se espera a que el input para correo sea visible
 
-        //Se crea la variable email donde se almacena un mail que ya esta en el registro de spotify para probar
-        String email = "pruebaSpotifyBootcamp12cl@yopmail.net";
-        while (true) {
-            inputCorreo.sendKeys(email); //En caso de que no existiera, se escribiria en el input de correo
+        WebElement txtCorreo = wait.until(ExpectedConditions.presenceOfElementLocated(locatorTxtCorreo));
+        String correo = "pruebaSpotifyBootcamp12cl@yopmail.net";
+        txtCorreo.sendKeys(correo);
 
-            // Si se muestra el mensaje de error, se borra el contenido que este escrito y se prueba con otro correo
-            if (errorCorreoInvalido.isDisplayed()) {
-                inputCorreo.clear();
-                email = "pruebaSpotifyBootcamp2023ts@yopmail.net";
-            } else {
-                break; //Si no hay error se sale
+        WebElement txtConfirmarCorreo = null;
+        try {
+            txtConfirmarCorreo = driver.findElement(locatorConfirmarCorreo);
+            txtConfirmarCorreo.sendKeys(correo);
+        } catch (Exception e) {
+            System.out.println("ocurrio un error al obtener el elemento web con el locator " + locatorConfirmarCorreo.toString());
+        }
+
+        String contrasena = "Estaesmiclaveasies1";
+        WebElement txtPassword = null;
+        try {
+            txtPassword = driver.findElement(locatorPassword);
+            txtPassword.sendKeys(contrasena);
+        } catch (Exception e) {
+            System.out.println("ocurrio un error al obtener el elemento web con el locator " + locatorPassword.toString());
+        }
+
+        String nombrePerfil = "Mi nombre";
+        WebElement txtNombrePerfil = null;
+        try {
+            txtNombrePerfil = wait.until(ExpectedConditions.presenceOfElementLocated(locatorNombrePerfil));
+            txtNombrePerfil.sendKeys(nombrePerfil);
+        } catch (Exception e) {
+            System.out.println("ocurrio un error al obtener el elemento web con el locator " + locatorNombrePerfil.toString());
+        }
+
+        String dia = "08";
+        WebElement txtDia = null;
+        try {
+            txtDia = wait.until(ExpectedConditions.presenceOfElementLocated(locatorDia));
+            txtDia.sendKeys(dia);
+        } catch (Exception e) {
+            System.out.println("ocurrio un error al obtener el elemento web con el locator " + locatorDia.toString());
+        }
+
+        String mes = "01";
+        WebElement ddlMes = null;
+        try {
+            ddlMes = wait.until(ExpectedConditions.presenceOfElementLocated(locatorMes));
+            Select selectorMes = new Select(ddlMes);
+            selectorMes.selectByValue(mes);
+        } catch (Exception e) {
+            System.out.println("ocurrio un error al obtener el elemento web con el locator " + locatorMes.toString());
+        }
+
+        String annio = "1993";
+        WebElement txtAnnio = null;
+        try {
+            txtAnnio = wait.until(ExpectedConditions.presenceOfElementLocated(locatorAnnio));
+            txtAnnio.sendKeys(annio);
+        } catch (Exception e) {
+            System.out.println("ocurrio un error al obtener el elemento web con el locator " + locatorAnnio.toString());
+        }
+
+        List<WebElement> generos = null;
+        try {
+            generos = wait.until(ExpectedConditions.presenceOfAllElementsLocatedBy(locatorGeneros));
+
+            //Scroll a los generos
+            js.executeScript("arguments[0].scrollIntoView(true);", generos.get(0));
+
+            generos.get(0).click();
+        } catch (Exception e) {
+            e.printStackTrace();
+            System.out.println("ocurrio un error al obtener el elemento web con el locator " + locatorGeneros.toString());
+        }
+
+        List<WebElement> checks = null;
+        try {
+            checks = wait.until(ExpectedConditions.presenceOfAllElementsLocatedBy(locatorChecks));
+
+            if (checks.size() == 2) {
+                checks.get(0).click();
+                checks.get(1).click();
             }
+        } catch (Exception e) {
+            e.printStackTrace();
+            System.out.println("ocurrio un error al obtener el elemento web con el locator " + locatorGeneros.toString());
         }
-        boolean pideConfirmarMail = driver.findElements(By.xpath("//*[@id='confirm']")).size() !=0;
-        if (pideConfirmarMail) {
-            inputConfirma.sendKeys(email);
+
+
+        WebElement btnConfirmar = null;
+
+        try {
+            btnConfirmar = wait.until(ExpectedConditions.presenceOfElementLocated(locatorBtnConfirmar));
+            //Scroll
+            js.executeScript("arguments[0].scrollIntoView(true);", btnConfirmar);
+
+            //con wait
+            btnConfirmar.click();
+        } catch (Exception e) {
+            e.printStackTrace();
+            System.out.println("ocurrio un error al obtener el elemento web con el locator " + locatorBtnConfirmar.toString());
         }
-        //De aqui en adelante, se agregan todos los demas datos que funcionan bien :(
-        inputClave.sendKeys("Estaesmiclave1");
-        inputNombre.sendKeys("Fran Benavides");
-        inputDiaNacimiento.sendKeys("08");
-        seleccionarMesNacimiento.sendKeys("Enero");
-        inputAnioNacimiento.sendKeys("1993");
-        ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView();", inputGenero); // Scrollea a la opcion de "genero"
-        inputGenero.click();
-        driver.manage().timeouts().implicitlyWait(TIMEOUT_SECONDS, TimeUnit.SECONDS);
-        //btnRegistrase.click();
+
+        String resultadoEsperado = "Este correo electr\u00f3nico ya est\u00e1 conectado a una cuenta. Inicia sesi\u00f3n.";
+
+        String resultadoActual = wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//span[contains(text(),'Este correo electr\u00f3nico ya est\u00e1 conectado a una cuenta. Inicia sesi\u00f3n.')]"))).getText();
+
+        Assertions.assertEquals(resultadoEsperado, resultadoActual);
+
+
     }
+
+
     @AfterEach
     void teardown() throws InterruptedException {
         // driver.quit();
