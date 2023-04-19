@@ -5,10 +5,7 @@ import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.openqa.selenium.By;
-import org.openqa.selenium.JavascriptExecutor;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
+import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -84,16 +81,37 @@ public class TestMercadoLibre {
             System.out.println("ha ocurrido un error al obtener el elemento web con el locator "+ locatorTxtMasCategorias.toString());
         }
 
-        By locatorTxtMusica = null;
-        WebElement txtMusica = null;
+        By locatorTxtTrekking = null;
+        WebElement txtTrekking = null;
         try {
-            locatorTxtMusica = By.xpath("//h3[contains(text(),'M\u00fasica')]");
-            txtMusica= wait.until(ExpectedConditions.presenceOfElementLocated(locatorTxtMusica));
-            js.executeScript("arguments[0].scrollIntoView(true);", txtMusica);
-            txtMusica.click();
+            locatorTxtTrekking = By.xpath("//h3[contains(text(),'Trekking y Monta\u00f1ismo')]");
+            txtTrekking= wait.until(ExpectedConditions.presenceOfElementLocated(locatorTxtTrekking));
+            js.executeScript("arguments[0].scrollIntoView(true);", txtTrekking);
+            txtTrekking.click();
         } catch (Exception e) {
-            System.out.println("ha ocurrido un error al obtener el elemento web con el locator "+ locatorTxtMusica.toString());
+            System.out.println("ha ocurrido un error al obtener el elemento web con el locator "+ locatorTxtTrekking.toString());
         }
+        By locatorCheckCategoria = null;
+        WebElement checkCategoria = null;
+        try {
+            locatorCheckCategoria = By.xpath("//input[@id='categorySearch']");
+            checkCategoria= wait.until(ExpectedConditions.presenceOfElementLocated(locatorCheckCategoria));
+            checkCategoria.click();
+        } catch (Exception e) {
+            System.out.println("ha ocurrido un error al obtener el elemento web con el locator "+ checkCategoria.toString());
+        }
+
+        By locatorInputBuscar = null;
+        WebElement inputBuscar = null;
+        try {
+            locatorInputBuscar = By.xpath("//input[@id='cb1-edit']");
+            inputBuscar= wait.until(ExpectedConditions.presenceOfElementLocated(locatorInputBuscar));
+            inputBuscar.sendKeys("Bastones",(Keys.ENTER));
+
+        } catch (Exception e) {
+            System.out.println("ha ocurrido un error al obtener el elemento web con el locator "+ locatorInputBuscar.toString());
+        }
+
 
 
 
