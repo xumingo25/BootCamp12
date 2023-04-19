@@ -68,7 +68,7 @@ public class TestMercadoLibre {
         By locatorTxtCategorias = null;
         WebElement txtCategorias = null;
         try {
-            locatorTxtCategorias = By.xpath("//a[contains(text(),'Catego')]");
+            locatorTxtCategorias = By.xpath("//a[contains(text(),'Categor\u00edas')]");
             txtCategorias = wait.until(ExpectedConditions.presenceOfElementLocated(locatorTxtCategorias));
             txtCategorias.click();
         } catch (Exception e) {
