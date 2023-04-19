@@ -49,9 +49,15 @@ public class TestMercadoLibre {
 
     @Test
     void CP001_BusquedaMELI_OK() throws InterruptedException {
-        By locatorTxtCookies = By.xpath("//button[contains(text(),'Entendido')]");
-        WebElement txtCookies = wait.until(ExpectedConditions.presenceOfElementLocated(locatorTxtCookies));
-        txtCookies.click();
+        By locatorTxtCookies = null;
+        WebElement txtCookies = null;
+        try {
+            locatorTxtCookies = By.xpath("//button[contains(text(),'Entendido')]");
+            txtCookies = wait.until(ExpectedConditions.presenceOfElementLocated(locatorTxtCookies));
+            txtCookies.click();
+        } catch (Exception e) {
+            System.out.println("ha ocurrido un error al obtener el elemento web con el locator "+ locatorTxtCookies.toString());
+        }
         categoria.click();
 
     }
