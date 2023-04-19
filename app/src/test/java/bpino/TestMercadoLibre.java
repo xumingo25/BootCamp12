@@ -23,10 +23,6 @@ public class TestMercadoLibre {
 
     JavascriptExecutor js;
 
-    @FindBy(xpath = "//a[contains(text(),'Catego')]")
-    WebElement categoria;
-
-
     @BeforeAll
     static void preparacionClase() {
         System.setProperty("file.encoding", "UTF-8");
@@ -58,7 +54,27 @@ public class TestMercadoLibre {
         } catch (Exception e) {
             System.out.println("ha ocurrido un error al obtener el elemento web con el locator "+ locatorTxtCookies.toString());
         }
-        categoria.click();
+
+        By locatorTxtUbicacion = null;
+        WebElement txtUbicacion = null;
+        try {
+            locatorTxtUbicacion = By.xpath("//span[contains(text(),'M\u00e1s tarde')]");
+            txtUbicacion = wait.until(ExpectedConditions.presenceOfElementLocated(locatorTxtUbicacion));
+            txtUbicacion.click();
+        } catch (Exception e) {
+            System.out.println("ha ocurrido un error al obtener el elemento web con el locator "+ locatorTxtUbicacion.toString());
+        }
+
+        By locatorTxtCategorias = null;
+        WebElement txtCategorias = null;
+        try {
+            locatorTxtCategorias = By.xpath("//a[contains(text(),'Catego')]");
+            txtCategorias = wait.until(ExpectedConditions.presenceOfElementLocated(locatorTxtCategorias));
+            txtCategorias.click();
+        } catch (Exception e) {
+            System.out.println("ha ocurrido un error al obtener el elemento web con el locator "+ locatorTxtCategorias.toString());
+        }
+
 
     }
 
