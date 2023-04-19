@@ -45,7 +45,7 @@ public class TestMercadoLibre {
             txtCookies = wait.until(ExpectedConditions.presenceOfElementLocated(locatorTxtCookies));
             txtCookies.click();
         } catch (Exception e) {
-            System.out.println("ha ocurrido un error al obtener el elemento web con el locator "+ locatorTxtCookies.toString());
+            System.out.println("ha ocurrido un error al obtener el elemento web con el locator " + locatorTxtCookies.toString());
         }
 
         By locatorTxtUbicacion = null;
@@ -55,7 +55,7 @@ public class TestMercadoLibre {
             txtUbicacion = wait.until(ExpectedConditions.presenceOfElementLocated(locatorTxtUbicacion));
             txtUbicacion.click();
         } catch (Exception e) {
-            System.out.println("ha ocurrido un error al obtener el elemento web con el locator "+ locatorTxtUbicacion.toString());
+            System.out.println("ha ocurrido un error al obtener el elemento web con el locator " + locatorTxtUbicacion.toString());
         }
 
         By locatorTxtCategorias = null;
@@ -65,94 +65,93 @@ public class TestMercadoLibre {
             txtCategorias = wait.until(ExpectedConditions.presenceOfElementLocated(locatorTxtCategorias));
             txtCategorias.click();
         } catch (Exception e) {
-            System.out.println("ha ocurrido un error al obtener el elemento web con el locator "+ locatorTxtCategorias.toString());
+            System.out.println("ha ocurrido un error al obtener el elemento web con el locator " + locatorTxtCategorias.toString());
         }
 
         By locatorTxtMasCategorias = null;
         WebElement txtMasCategorias = null;
         try {
             locatorTxtMasCategorias = By.xpath("//a[contains(text(),'Ver m\u00e1s categor\u00edas')]");
-            txtMasCategorias= wait.until(ExpectedConditions.presenceOfElementLocated(locatorTxtMasCategorias));
+            txtMasCategorias = wait.until(ExpectedConditions.presenceOfElementLocated(locatorTxtMasCategorias));
             js.executeScript("arguments[0].scrollIntoView(true);", txtMasCategorias);
             txtMasCategorias.click();
         } catch (Exception e) {
-            System.out.println("ha ocurrido un error al obtener el elemento web con el locator "+ locatorTxtMasCategorias.toString());
+            System.out.println("ha ocurrido un error al obtener el elemento web con el locator " + locatorTxtMasCategorias.toString());
         }
 
         By locatorTxtTrekking = null;
         WebElement txtTrekking = null;
         try {
             locatorTxtTrekking = By.xpath("//h3[contains(text(),'Trekking y Monta\u00f1ismo')]");
-            txtTrekking= wait.until(ExpectedConditions.presenceOfElementLocated(locatorTxtTrekking));
+            txtTrekking = wait.until(ExpectedConditions.presenceOfElementLocated(locatorTxtTrekking));
             js.executeScript("arguments[0].scrollIntoView(true);", txtTrekking);
             txtTrekking.click();
         } catch (Exception e) {
-            System.out.println("ha ocurrido un error al obtener el elemento web con el locator "+ locatorTxtTrekking.toString());
+            System.out.println("ha ocurrido un error al obtener el elemento web con el locator " + locatorTxtTrekking.toString());
         }
         By locatorCheckCategoria = null;
         WebElement checkCategoria = null;
         try {
             locatorCheckCategoria = By.xpath("//input[@id='categorySearch']");
-            checkCategoria= wait.until(ExpectedConditions.presenceOfElementLocated(locatorCheckCategoria));
+            checkCategoria = wait.until(ExpectedConditions.presenceOfElementLocated(locatorCheckCategoria));
             checkCategoria.click();
         } catch (Exception e) {
-            System.out.println("ha ocurrido un error al obtener el elemento web con el locator "+ checkCategoria.toString());
+            System.out.println("ha ocurrido un error al obtener el elemento web con el locator " + checkCategoria.toString());
         }
 
         By locatorInputBuscar = null;
         WebElement inputBuscar = null;
         try {
             locatorInputBuscar = By.xpath("//input[@id='cb1-edit']");
-            inputBuscar= wait.until(ExpectedConditions.presenceOfElementLocated(locatorInputBuscar));
-            inputBuscar.sendKeys("Bastones",(Keys.RETURN));
+            inputBuscar = wait.until(ExpectedConditions.presenceOfElementLocated(locatorInputBuscar));
+            inputBuscar.sendKeys("Bastones", (Keys.RETURN));
 
         } catch (Exception e) {
-            System.out.println("ha ocurrido un error al obtener el elemento web con el locator "+ locatorInputBuscar.toString());
+            System.out.println("ha ocurrido un error al obtener el elemento web con el locator " + locatorInputBuscar.toString());
         }
 
         By locatorTxtProducto = null;
         WebElement txtProducto = null;
         try {
             locatorTxtProducto = By.xpath("//h2[contains(text(),'Bastones De Trekking 2 Unidades Par Ajustable Aluminio 7075')]");
-            txtProducto= wait.until(ExpectedConditions.elementToBeClickable(locatorTxtProducto));
+            txtProducto = wait.until(ExpectedConditions.elementToBeClickable(locatorTxtProducto));
             js.executeScript("arguments[0].scrollIntoView(true);", txtProducto);
             txtProducto.click();
 
         } catch (Exception e) {
-            System.out.println("ha ocurrido un error al obtener el elemento web con el locator "+ locatorTxtProducto.toString());
+            System.out.println("ha ocurrido un error al obtener el elemento web con el locator " + locatorTxtProducto.toString());
         }
 
-        By locatorTxtComprar= null;
+        By locatorTxtComprar = null;
         WebElement txtComprar = null;
         try {
             locatorTxtComprar = By.xpath("//span[contains(text(),'Comprar ahora')]");
-            txtComprar= wait.until(ExpectedConditions.elementToBeClickable(locatorTxtComprar));
+            txtComprar = wait.until(ExpectedConditions.elementToBeClickable(locatorTxtComprar));
             js.executeScript("arguments[0].scrollIntoView(true);", txtComprar);
             txtComprar.click();
 
         } catch (Exception e) {
-            System.out.println("ha ocurrido un error al obtener el elemento web con el locator "+ locatorTxtComprar.toString());
+            System.out.println("ha ocurrido un error al obtener el elemento web con el locator " + locatorTxtComprar.toString());
         }
         String resultadoEsperado = null;
         WebElement texto = null;
         try {
-            resultadoEsperado= "\u00A1Hola! Para comprar, ingresa a tu cuenta";
+            resultadoEsperado = "\u00A1Hola! Para comprar, ingresa a tu cuenta";
 
             texto = wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//h1[contains(text(),'\u00A1Hola! Para comprar, ingresa a tu cuenta')]")));
 
-            Assertions.assertEquals(resultadoEsperado,texto.getText());
+            Assertions.assertEquals(resultadoEsperado, texto.getText());
 
             System.out.println("Test finalizado");
 
-        }catch (Exception e){
+        } catch (Exception e) {
             System.out.println("No se ha encontrado el texto esperado");
         }
-
 
     }
 
     @AfterEach
     void posTests() {
-        //driver.close();
+        driver.close();
     }
 }
