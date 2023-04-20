@@ -79,9 +79,9 @@ public class MercadoLibreTest {
         By locatorItemTaladro =null;
         WebElement itemTaladro;
         try{
-            locatorItemTaladro= By.xpath("//div[@data-index=\"0\"] and contains(text(),'Taladro')");
+            locatorItemTaladro= By.xpath("//div[@data-index=\"0\" and @class=\"slick-slide slick-active\"] ");
             itemTaladro = wait.until(ExpectedConditions.presenceOfElementLocated(locatorItemTaladro));
-
+            js.executeScript("arguments[0].scrollIntoView(true);", itemTaladro);
             itemTaladro.click();
         }catch (Exception e){
             System.out.println("ocurrio un error al obtener el elemento web con el locator "+ locatorItemTaladro.toString());
