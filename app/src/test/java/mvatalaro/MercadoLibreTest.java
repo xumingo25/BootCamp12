@@ -63,47 +63,38 @@ public class MercadoLibreTest {
         }
 
 
-        By locatorItemElectrodomesticos =null;
-        WebElement itemElectrodomesticos;
+        By locatorItemHerramientas =null;
+        WebElement itemHerramientas;
 
         try{
-            locatorItemElectrodomesticos = By.xpath("//ul/li/a[contains(@href, 'electrodomesticos-y-aires-ac#menu')]");
-            itemElectrodomesticos = wait.until(ExpectedConditions.presenceOfElementLocated(locatorItemElectrodomesticos));
+            locatorItemHerramientas = By.xpath("//a[contains(text(), 'Herramientas')]");
+            itemHerramientas = wait.until(ExpectedConditions.presenceOfElementLocated(locatorItemHerramientas));
 
-            itemElectrodomesticos.click();
+            itemHerramientas.click();
 
         }catch (Exception e){
-            System.out.println("ocurrio un error al obtener el elemento web con el locator "+ locatorItemElectrodomesticos.toString());
+            System.out.println("ocurrio un error al obtener el elemento web con el locator "+ locatorItemHerramientas.toString());
         }
 
-        By locatorItemHeladera =null;
-        WebElement itemHeladera;
+        By locatorItemTaladro =null;
+        WebElement itemTaladro;
         try{
-            locatorItemHeladera = By.xpath("//img[@alt=\"Heladeras \"]");
-            itemHeladera = wait.until(ExpectedConditions.presenceOfElementLocated(locatorItemHeladera));
+            locatorItemTaladro= By.xpath("//div[@data-index=\"0\"] and contains(text(),'Taladro')");
+            itemTaladro = wait.until(ExpectedConditions.presenceOfElementLocated(locatorItemTaladro));
 
-            itemHeladera.click();
+            itemTaladro.click();
         }catch (Exception e){
-            System.out.println("ocurrio un error al obtener el elemento web con el locator "+ locatorItemHeladera.toString());
+            System.out.println("ocurrio un error al obtener el elemento web con el locator "+ locatorItemTaladro.toString());
         }
 
-        By locatorHeladeraElegida =null;
-        WebElement itemHeladeraElegida;
-        try{
-            locatorHeladeraElegida = By.xpath("//p[@class=\"ui-recommendations-card__title\"]//ancestor::a[contains(text(), \"555L\")]");
-            itemHeladeraElegida = wait.until(ExpectedConditions.presenceOfElementLocated(locatorHeladeraElegida));
 
-            itemHeladeraElegida.click();
-        }catch (Exception e){
-            System.out.println("ocurrio un error al obtener el elemento web con el locator "+ locatorHeladeraElegida.toString());
-        }
 
         By locatorBtnComprarAhora = null;
         WebElement btnComprarAhora;
 
 
         try{
-            locatorBtnComprarAhora = By.xpath("//button[@class=\"andes-button andes-spinner__icon-base andes-button--loud\"]"); //Creo el localizador
+            locatorBtnComprarAhora = By.xpath("//button//span[@class=\"andes-button__content\" and contains(text(), 'Comprar ahora') ]"); //Creo el localizador
             btnComprarAhora = wait.until(ExpectedConditions.presenceOfElementLocated(locatorBtnComprarAhora)); //creación de elemento web
             //Scroll
             js.executeScript("arguments[0].scrollIntoView(true);", btnComprarAhora);
