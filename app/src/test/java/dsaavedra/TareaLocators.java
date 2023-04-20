@@ -28,7 +28,7 @@ public class TareaLocators {
 
     @BeforeAll
     static void preparacionClase(){
-        System.setProperty("file.encoding", "UTF-8");
+        //System.setProperty("file.encoding", "UTF-8");
         WebDriverManager.chromedriver().setup();
     }
 
