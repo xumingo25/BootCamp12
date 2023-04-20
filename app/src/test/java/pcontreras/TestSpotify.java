@@ -50,7 +50,7 @@ class TareaLocators {
             birthMonth.sendKeys("Febrero");
         //WebElement gender = driver.findElement(By.xpath("//*[@id=\"gender_option_female\"]")).sendKeys("Mujer");
         //WebElement optBox = driver.findElement(By.xpath("//*[@id=\"marketing_check_optbox\"]"));
-            optBox.click();
+        //    optBox.click();
     }
 
     @AfterEach
