@@ -35,9 +35,14 @@ class testMeLi {
     void testAbrirPag() {
         driver.navigate().to("https://www.mercadolibre.cl/");
 
-        WebElement searchBar = driver.findElement(By.xpath("//*[@id=\"nav-search-input\"]"));
-            searchBar.sendKeys("puur");
+        WebElement searchBar = driver.findElement(By.xpath("//*[@id=\"cb1-edit\"]"));
+            searchBar.sendKeys("puur bottle denda");
 
+        WebElement btnSubmit = driver.findElement(By.xpath("//header/div[1]/div[2]/form[1]/button[1]"));
+            btnSubmit.submit();
+
+        WebElement btnProducto1 = driver.findElement(By.xpath("//h2[contains(text(),'Botella Térmica Puur Unicorn 500 Ml')]"));
+            btnProducto1.submit();
         // Verify
         //assertThat(title).contains("Selenium WebDriver");
     }
