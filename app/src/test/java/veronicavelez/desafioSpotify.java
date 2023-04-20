@@ -1,4 +1,4 @@
-package gnieto;
+package veronicavelez;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.junit.jupiter.api.AfterEach;
@@ -14,7 +14,7 @@ import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.JavascriptExecutor;
 import java.util.concurrent.TimeUnit;
 
-class DesafioSpotify {
+public class desafioSpotify {
 
     WebDriver driver;
 
@@ -33,8 +33,8 @@ class DesafioSpotify {
     WebElement registrarse;
 
 
-    //@FindBy(xpath = "//*[@id=\"main\"]/div/div[2]/div[1]/header/button[1]")
-  //  WebElement mejorar;
+//@FindBy(xpath = "//*[@id=\"main\"]/div/div[2]/div[1]/header/button[1]")
+// WebElement mejorar;
 
 
     @BeforeAll
@@ -61,12 +61,12 @@ class DesafioSpotify {
 
 // Crear usuario con correo electrónico
         WebElement email = driver.findElement(By.xpath("//*[@id=\"email\"]"));
-        email.sendKeys("57-guada@algo.com");
+        email.sendKeys("1234mave@algo.com");
 
 
-        // Confirmación de correo electrónico
+// Confirmación de correo electrónico
         WebElement confirmEmail = driver.findElement(By.xpath("//*[@id=\"confirm\"]"));
-        confirmEmail.sendKeys("57-guada@algo.com");
+        confirmEmail.sendKeys("1234mave@algo.com");
 
 // Cerrar cuadro de dialogo de las cookies
         WebElement cache = driver.findElement(By.xpath("//*[@id=\"onetrust-close-btn-container\"]/button"));
@@ -75,19 +75,19 @@ class DesafioSpotify {
 
 // Contraseña
         WebElement password = driver.findElement(By.xpath("//*[@id=\"password\"]"));
-        password.sendKeys("hola-domingo123");
+        password.sendKeys("holaquetal123");
 
 // Cómo quieres que te llamemos?
         WebElement displayname = driver.findElement(By.xpath("//*[@id=\"displayname\"]"));
-        displayname.sendKeys("guadita123");
+        displayname.sendKeys("mave27");
 
 // Fecha de nacimiento
         WebElement birthMonth = driver.findElement(By.xpath("//*[@id=\"month\"]"));
-        birthMonth.sendKeys("Mayo"); // Selecciona el mes de nacimiento
+        birthMonth.sendKeys("Diciembre"); // Selecciona el mes de nacimiento
         WebElement birthDay = driver.findElement(By.xpath("//*[@id=\"day\"]"));
-        birthDay.sendKeys("17"); // Selecciona el día de nacimiento
+        birthDay.sendKeys("27"); // Selecciona el día de nacimiento
         WebElement birthYear = driver.findElement(By.xpath("//*[@id=\"year\"]"));
-        birthYear.sendKeys("1992"); // Selecciona el año de nacimiento
+        birthYear.sendKeys("1996"); // Selecciona el año de nacimiento
 
 
         ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView();", genero);
@@ -100,10 +100,10 @@ class DesafioSpotify {
         ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView();", Noquiero);
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 
-       // WebElement mejora = driver.findElement(By.xpath("//*[@id=\"main\"]/div/div[2]/div[1]/header/button[1]"));
+// WebElement mejora = driver.findElement(By.xpath("//*[@id=\"main\"]/div/div[2]/div[1]/header/button[1]"));
 
 
-        // Aquí hacemos clic en el botón "Registrarse"
+// Aquí hacemos clic en el botón "Registrarse"
         WebElement registrarse = driver.findElement(By.xpath("//*[@id=\"__next\"]/main/div/div/form/div[8]/div/button/span[1]"));
 
 
@@ -113,7 +113,7 @@ class DesafioSpotify {
 
 
 
-      //  mejorar.click();
+// mejorar.click();
 
 
     }
@@ -123,6 +123,6 @@ class DesafioSpotify {
 
     @AfterEach
     void posTests() {
-        //driver.close();
+//driver.close();
     }
 }

@@ -1,0 +1,140 @@
+package abracamonte;
+
+import io.github.bonigarcia.wdm.WebDriverManager;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.PageFactory;
+
+import java.util.concurrent.TimeUnit;
+
+
+public class LocatorsTest {
+    WebDriver driver;
+
+    @FindBy(xpath = "//button[contains(text(), 'Registra')]")
+    WebElement btnRegistrarse;
+
+    @BeforeAll
+    static void setupClass() {
+        WebDriverManager.chromedriver().setup();
+    }
+
+    @BeforeEach
+    void setupTest() {
+        driver = new ChromeDriver();
+    }
+
+    @AfterEach
+    void teardown() {
+        driver.quit();
+    }
+
+    @Test
+    void test() {
+        // Exercise
+        PageFactory.initElements(driver, this);
+        driver.get("https://www.spotify.com/cl");
+        // Esperar a que se cargue la página de resultados
+        try {
+
+            Thread.sleep(5000); // Esperar 5 segundos
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
+        String title = driver.getTitle();
+        System.out.println("Este es el titulo de la pagina: " + title);
+
+        driver.manage().window().maximize();
+
+        btnRegistrarse.click();
+
+
+        // Esperar a que se cargue la página de resultados
+        try {
+
+            Thread.sleep(10000); // Esperar 10 segundos
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
+        WebElement inputEmail = driver.findElement(By.xpath("//input[contains(@placeholder, 'Pon tu correo electr')]"));
+        inputEmail.sendKeys("elcorreo@email.com");
+
+
+        boolean siAparece = driver.findElements(By.xpath("//input[contains(@placeholder, 'Vuelve a poner tu correo electr')]")).size() !=0;
+        if (siAparece) {
+            WebElement inputEmail2 = driver.findElement(By.xpath("//input[contains(@placeholder, 'Vuelve a poner tu correo electr')]"));
+            inputEmail2.sendKeys("elcorreo@email.com");
+        }
+
+        WebElement creaPassword = driver.findElement(By.xpath("//input[contains(@placeholder, 'Crea una contrase')]"));
+        creaPassword.sendKeys("Clave1234**");
+
+
+        WebElement creaNombre = driver.findElement(By.xpath("//input[contains(@placeholder, 'Pon un nombre de perfil')]"));
+        creaNombre.sendKeys("Mi nombre");
+
+
+        WebElement diaNac = driver.findElement(By.xpath("//input[contains(@placeholder, 'DD')]"));
+        diaNac.sendKeys("12");
+
+
+        WebElement mesNac = driver.findElement(By.xpath("//select[contains(@name, 'month')]"));
+        mesNac.sendKeys("Abril");
+
+
+        WebElement yearNac = driver.findElement(By.xpath("//input[contains(@placeholder, 'AAAA')]"));
+        yearNac.sendKeys("1994");
+
+        // Esperar a que se cargue la página de resultados
+        try {
+
+            Thread.sleep(5000); // Esperar 5 segundos
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
+        WebElement female= driver.findElement(By.xpath("//label[contains(@for, 'gender_option_female')]"));
+        female.click();
+
+
+        WebElement noMarket = driver.findElement(By.xpath("//label[contains(@for, 'marketing-opt-checkbox')]"));
+        noMarket.click();
+
+        // Esperar a que se cargue la página de resultados
+        try {
+
+            Thread.sleep(3000); // Esperar 3 segundos
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
+
+        WebElement compartirDatos = driver.findElement(By.xpath("//label[contains(@for, 'third-party-checkbox')]"));
+        compartirDatos.click();
+
+
+        // Esperar a que se cargue la página de resultados
+        try {
+
+            Thread.sleep(5000); // Esperar 5 segundos
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
+
+        title = driver.getTitle();
+        System.out.println("Titulo de pagina: "+ title);
+
+
+
+    }
+}

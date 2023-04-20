@@ -1,4 +1,4 @@
-package rmagnarelli;
+package veronicavelez;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.junit.jupiter.api.*;
@@ -26,21 +26,18 @@ public class TareaLocators {
         PageFactory.initElements(driver,this);
         driver.get("https://open.spotify.com/");
 
-        //Maximizar page
+//Maximizar page
         driver.manage().window().maximize();
     }
 
     @Test
     void testEjemploSpotify(){
-        //Aqui crearemos el test
+//Aqui crearemos el test
         btnRegistrase.click();
-
-
     }
 
     @AfterEach
     void posTests(){
-        //driver.close();
+//driver.close();
     }
 }
-
