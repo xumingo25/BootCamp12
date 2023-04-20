@@ -67,8 +67,8 @@ public class MercadoLibreTest {
         WebElement itemElectrodomesticos;
 
         try{
-            locatorItemElectrodomesticos = By.xpath("");
-            itemElectrodomesticos = wait.until(ExpectedConditions.presenceOfElementLocated(locatorItemCategorias));
+            locatorItemElectrodomesticos = By.xpath("//ul/li/a[contains(@href, 'electrodomesticos-y-aires-ac#menu')]");
+            itemElectrodomesticos = wait.until(ExpectedConditions.presenceOfElementLocated(locatorItemElectrodomesticos));
 
             itemElectrodomesticos.click();
 
