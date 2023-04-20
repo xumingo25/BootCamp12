@@ -16,12 +16,12 @@ import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import java.time.Instant;
 import java.util.concurrent.TimeUnit;
 
 public class MercadoLibre {
     WebDriver driver;
     WebDriverWait wait;
-    JavascriptExecutor js;
 
     @FindBy(xpath = "//button[@class='nav-search-btn']")  // []
     WebElement btnBuscar;
@@ -35,8 +35,7 @@ public class MercadoLibre {
     @BeforeEach
     void setupTest() {
         driver = new ChromeDriver();
-        wait = new WebDriverWait(driver, 5);
-        js = (JavascriptExecutor) driver;
+        wait = new WebDriverWait(driver,5);
 
         PageFactory.initElements(driver, this);
         driver.get("https://www.mercadolibre.cl/");
