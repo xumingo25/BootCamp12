@@ -8,6 +8,7 @@ import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import java.nio.charset.StandardCharsets;
 import java.util.concurrent.TimeUnit;
 
 public class TestMercadoLibre {
@@ -51,7 +52,7 @@ public class TestMercadoLibre {
         By locatorTxtUbicacion = null;
         WebElement txtUbicacion = null;
         try {
-            locatorTxtUbicacion = By.xpath("//span[contains(text(),'M\u00e1s tarde')]");
+            locatorTxtUbicacion = By.xpath(fixEncoding("//span[contains(text(),'Más tarde')]"));
             txtUbicacion = wait.until(ExpectedConditions.presenceOfElementLocated(locatorTxtUbicacion));
             txtUbicacion.click();
         } catch (Exception e) {
@@ -61,7 +62,7 @@ public class TestMercadoLibre {
         By locatorTxtCategorias = null;
         WebElement txtCategorias = null;
         try {
-            locatorTxtCategorias = By.xpath("//a[contains(text(),'Categor\u00edas')]");
+            locatorTxtCategorias = By.xpath(fixEncoding("//a[contains(text(),'Categorías')]"));
             txtCategorias = wait.until(ExpectedConditions.presenceOfElementLocated(locatorTxtCategorias));
             txtCategorias.click();
         } catch (Exception e) {
@@ -71,7 +72,7 @@ public class TestMercadoLibre {
         By locatorTxtMasCategorias = null;
         WebElement txtMasCategorias = null;
         try {
-            locatorTxtMasCategorias = By.xpath("//a[contains(text(),'Ver m\u00e1s categor\u00edas')]");
+            locatorTxtMasCategorias = By.xpath(fixEncoding("//a[contains(text(),'Ver más categorías')]"));
             txtMasCategorias = wait.until(ExpectedConditions.presenceOfElementLocated(locatorTxtMasCategorias));
             js.executeScript("arguments[0].scrollIntoView(true);", txtMasCategorias);
             txtMasCategorias.click();
@@ -82,7 +83,7 @@ public class TestMercadoLibre {
         By locatorTxtTrekking = null;
         WebElement txtTrekking = null;
         try {
-            locatorTxtTrekking = By.xpath("//h3[contains(text(),'Trekking y Monta\u00f1ismo')]");
+            locatorTxtTrekking = By.xpath(fixEncoding("//h3[contains(text(),'Trekking y Montañismo')]"));
             txtTrekking = wait.until(ExpectedConditions.presenceOfElementLocated(locatorTxtTrekking));
             js.executeScript("arguments[0].scrollIntoView(true);", txtTrekking);
             txtTrekking.click();
@@ -136,9 +137,9 @@ public class TestMercadoLibre {
         String resultadoEsperado = null;
         WebElement texto = null;
         try {
-            resultadoEsperado = "\u00A1Hola! Para comprar, ingresa a tu cuenta";
+            resultadoEsperado = fixEncoding("¡Hola! Para comprar, ingresa a tu cuenta");
 
-            texto = wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//h1[contains(text(),'\u00A1Hola! Para comprar, ingresa a tu cuenta')]")));
+            texto = wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath(fixEncoding("//h1[contains(text(),'¡Hola! Para comprar, ingresa a tu cuenta')]"))));
 
             Assertions.assertEquals(resultadoEsperado, texto.getText());
 
@@ -153,5 +154,9 @@ public class TestMercadoLibre {
     @AfterEach
     void posTests() {
         driver.close();
+    }
+    public static String fixEncoding(String text) {
+        byte[] utf8Bytes = text.getBytes(StandardCharsets.ISO_8859_1);
+        return new String(utf8Bytes, StandardCharsets.UTF_8);
     }
 }
