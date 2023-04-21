@@ -18,8 +18,7 @@ public class TestMercadoLibre {
     JavascriptExecutor js;
 
     @BeforeAll
-    static void preparacionClase() {
-        System.setProperty("file.encoding", "UTF-8");
+    static void setupClass() {
         WebDriverManager.chromedriver().setup();
     }
 
