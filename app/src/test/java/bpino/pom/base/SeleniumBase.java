@@ -4,7 +4,9 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.util.List;
 
@@ -12,6 +14,7 @@ public class SeleniumBase {
     private WebDriver driver;
     private JavascriptExecutor js;
     private Select select;
+    private WebDriverWait wait;
 
     public SeleniumBase(WebDriver driver) {
         this.driver = driver;
@@ -49,6 +52,9 @@ public class SeleniumBase {
     public void escribir(String texto, By localizador) {
         driver.findElement(localizador).sendKeys(texto);
     }
+    public void escribir(String texto, WebElement elemento){
+        elemento.sendKeys(texto);
+    }
 
     public void cerrarVentana() {
         driver.close();
@@ -82,5 +88,11 @@ public class SeleniumBase {
     public void seleccionarCBPorTxtVisible(WebElement elemento, String valor){
         select = new Select(elemento);
         select.selectByVisibleText(valor);
+    }
+
+    public WebElement esperarPorElementoVisible(WebElement element){
+        wait = new WebDriverWait(driver,20);
+
+        return wait.until(ExpectedConditions.visibilityOf(element));
     }
 }
