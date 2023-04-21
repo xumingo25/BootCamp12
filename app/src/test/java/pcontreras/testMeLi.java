@@ -41,7 +41,7 @@ class testMeLi {
         WebElement btnSubmit = driver.findElement(By.xpath("//header/div[1]/div[2]/form[1]/button[1]"));
             btnSubmit.submit();
 
-        WebElement btnProducto1 = driver.findElement(By.xpath("//h2[contains(text(),'Botella Térmica Puur Unicorn 500 Ml')]"));
+        WebElement btnProducto1 = driver.findElement(By.xpath("//h2[contains(text(),'Puur Bottle Blossom Blue 500ml - Puur')]"));
             btnProducto1.submit();
         // Verify
         //assertThat(title).contains("Selenium WebDriver");
