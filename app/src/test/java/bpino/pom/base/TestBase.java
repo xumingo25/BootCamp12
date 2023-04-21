@@ -11,7 +11,7 @@ public class TestBase {
     public WebDriver driver;
 
     @BeforeAll
-    public void initTesting(){
+    public static void initTesting(){
         WebDriverManager.chromedriver().setup();
     }
 

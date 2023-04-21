@@ -42,6 +42,9 @@ public class SeleniumBase {
     public void clickear(By localizador) {
         driver.findElement(localizador);
     }
+    public void clickear(WebElement elemento){
+        elemento.click();
+    }
 
     public void escribir(String texto, By localizador) {
         driver.findElement(localizador).sendKeys(texto);

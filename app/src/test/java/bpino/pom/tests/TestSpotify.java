@@ -2,17 +2,21 @@ package bpino.pom.tests;
 
 import bpino.pom.base.TestBase;
 import bpino.pom.pages.HomePage;
-import bpino.pom.pages.RegistrarPage;
+import bpino.pom.pages.RegisterPage;
 import org.junit.jupiter.api.Test;
 
 public class TestSpotify extends TestBase {
-    HomePage homePage = new HomePage(super.driver);
-    RegistrarPage registrarPage = new RegistrarPage(super.driver);
+    HomePage homePage;
+    RegisterPage registrarPage;
 
     @Test
     public void CP001_FormularioOK(){
+        homePage = new HomePage(super.driver);
+        registrarPage = new RegisterPage(super.driver);
+        homePage.navegarAPagina("https://open.spotify.com/");
         homePage.irARegistrarte();
-        registrarPage.completarFormularioRegistro("pajaritosfelices@pio.com",
+        registrarPage.completarFormularioRegistro(
+                "pajaritosfelices@pio.com",
                 "",
                 "",
                 "",
