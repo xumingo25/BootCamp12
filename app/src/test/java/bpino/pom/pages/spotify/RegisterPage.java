@@ -1,4 +1,4 @@
-package bpino.pom.pages;
+package bpino.pom.pages.spotify;
 
 import bpino.pom.base.SeleniumBase;
 import org.openqa.selenium.By;
