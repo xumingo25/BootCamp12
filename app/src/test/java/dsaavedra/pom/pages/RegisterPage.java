@@ -37,7 +37,8 @@ public class RegisterPage extends SeleniumBase {
         //CompletarElFormulario
     public void completarFormularioRegistro(String correo,String confirmarCorreo,String password, String apodo, String dia, String mes,String annio,String genero, boolean recibirMensaje, boolean compartirDatos){
 
-        escribir(correo,locatorTextBoxCorreo);
+
+        escribir(correo,esperarPorElementoVisible(buscarElementoWeb(locatorTextBoxCorreo)));
         if(estaDesplegado(locatorTextBoxConfirmarCorreo)){
             escribir(confirmarCorreo,locatorTextBoxConfirmarCorreo);
         }
