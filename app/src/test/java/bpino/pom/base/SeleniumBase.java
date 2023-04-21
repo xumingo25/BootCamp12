@@ -1,13 +1,17 @@
 package bpino.pom.base;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.Select;
 
 import java.util.List;
 
 public class SeleniumBase {
     private WebDriver driver;
+    private JavascriptExecutor js;
+    private Select select;
 
     public SeleniumBase(WebDriver driver) {
         this.driver = driver;
@@ -65,5 +69,15 @@ public class SeleniumBase {
         } catch (org.openqa.selenium.NoSuchElementException e) {
             return false;
         }
+    }
+
+    public void scroll(WebElement elemento){
+        js = (JavascriptExecutor) driver;
+        js.executeScript("arguments[0].scrollIntoView(true);", elemento);
+    }
+
+    public void seleccionarCBPorTxtVisible(WebElement elemento, String valor){
+        select = new Select(elemento);
+        select.selectByVisibleText(valor);
     }
 }
