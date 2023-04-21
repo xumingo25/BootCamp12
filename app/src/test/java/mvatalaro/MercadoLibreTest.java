@@ -49,32 +49,54 @@ public class MercadoLibreTest {
     @Test
     void CP001_CompraProductoML_NOOK_DebeLoguearse() throws InterruptedException {
 
+       //**************************Aceptar las cookies*********************************************
 
+        By locatorCookies = null;
+        WebElement cookies = null;
+        try {
+            locatorCookies = By.xpath("//button[contains(text(),'Entendido')]");
+            cookies = wait.until(ExpectedConditions.presenceOfElementLocated(locatorCookies));
+            cookies.click();
+        } catch (Exception e) {
+            System.out.println("ha ocurrido un error al obtener el elemento web con el locator " + locatorCookies.toString());
+        }
+        //**********************Postergar la ubicacion****************************************************
+
+        By locatorUbicacion = null;
+        WebElement ubicacion = null;
+        try {
+            locatorUbicacion = By.xpath("//button[@data-js=\"onboarding-cp-close\"]");
+            ubicacion = wait.until(ExpectedConditions.presenceOfElementLocated(locatorUbicacion));
+            ubicacion.click();
+        } catch (Exception e) {
+            System.out.println("ha ocurrido un error al obtener el elemento web con el locator " + locatorUbicacion.toString());
+        }
     //******************Elemento Item Desplegable Categorias*************************************
+
         By locatorItemCategorias = null;
         WebElement itemCategorias;
         try{
             locatorItemCategorias = By.xpath("//a[@class=\"nav-menu-categories-link\"]"); //Creo el localizador
             itemCategorias = wait.until(ExpectedConditions.presenceOfElementLocated(locatorItemCategorias)); //creación de elemento web
             //con wait
-            itemCategorias.isDisplayed();
+            itemCategorias.click();
         }catch (Exception e){
             System.out.println("ocurrio un error al obtener el elemento web con el locator "+ locatorItemCategorias.toString());
         }
-
+    //************************Elemento Herramientas*************************************************
 
         By locatorItemHerramientas =null;
         WebElement itemHerramientas;
 
         try{
-            locatorItemHerramientas = By.xpath("//a[contains(text(), 'Herramientas')]");
-            itemHerramientas = wait.until(ExpectedConditions.presenceOfElementLocated(locatorItemHerramientas));
-
-            itemHerramientas.click();
+            locatorItemHerramientas = By.xpath( "//a[@href=\"https://www.mercadolibre.com.ar/c/herramientas#menu=categories\"]"); ////a[contains(text(), 'Herramientas')] //ul[@class='nav-categs-departments']//descendant::li//a[contains(text(), 'Herramientas')]
+            itemHerramientas = wait.until(ExpectedConditions.presenceOfElementLocated(locatorItemHerramientas));                //ul[@class="nav-categs-departments"]//descendant::li//a[contains(text(), 'Herramientas')]
+            js.executeScript("arguments[0].click();", itemHerramientas);
 
         }catch (Exception e){
             System.out.println("ocurrio un error al obtener el elemento web con el locator "+ locatorItemHerramientas.toString());
         }
+       //************************Elemento Taladro*******************************************************
 
         By locatorItemTaladro =null;
         WebElement itemTaladro;
@@ -88,7 +110,7 @@ public class MercadoLibreTest {
         }
 
 
-
+        //**********************Elemento boton Comprar ahora**********************************************
         By locatorBtnComprarAhora = null;
         WebElement btnComprarAhora;
 
@@ -105,6 +127,8 @@ public class MercadoLibreTest {
             e.printStackTrace();
             System.out.println("ocurrio un error al obtener el elemento web con el locator "+ locatorBtnComprarAhora.toString());
         }
+
+        //*********************Resultados********************************************************
 
         String resultadoEsperado ="¡Hola! Para comprar ingresa a tu cuenta";
 
