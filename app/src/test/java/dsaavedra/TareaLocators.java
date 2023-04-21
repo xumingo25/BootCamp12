@@ -14,6 +14,8 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import java.nio.charset.Charset;
+import java.nio.charset.StandardCharsets;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
@@ -28,7 +30,7 @@ public class TareaLocators {
 
     @BeforeAll
     static void preparacionClase(){
-        System.setProperty("file.encoding", "UTF-8");
+        //System.setProperty("file.encoding", "UTF-8");
         WebDriverManager.chromedriver().setup();
     }
 
@@ -172,7 +174,7 @@ public class TareaLocators {
             System.out.println("ocurrio un error al obtener el elemento web con el locator "+ locatorBtnConfirmar.toString());
         }
 
-        String resultadoEsperado = "Este correo electrónico ya está conectado a una cuenta.";
+        String resultadoEsperado = fixEncoding("Este correo electrónico ya está conectado a una cuenta. Inicia sesión.");
 
         String resultadoActual = wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//span[contains(text(),'Este correo')]"))).getText();
 
@@ -304,7 +306,7 @@ public class TareaLocators {
             System.out.println("ocurrio un error al obtener el elemento web con el locator "+ locatorBtnConfirmar.toString());
         }
 
-        String resultadoEsperado = "Este correo electrónico no es válido. Asegúrate de que tenga un formato como este: ejemplo@email.com";
+        String resultadoEsperado = fixEncoding("Este correo electrónico no es válido. Asegúrate de que tenga un formato como este: ejemplo@email.com");
 
         String resultadoActual = wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//span[contains(text(),'formato como este: ejemplo@email.com')]"))).getText();
 
@@ -316,5 +318,10 @@ public class TareaLocators {
     @AfterEach
     void posTests(){
         driver.close();
+    }
+
+    public static String fixEncoding(String text) {
+        byte[] utf8Bytes = text.getBytes(StandardCharsets.ISO_8859_1);
+        return new String(utf8Bytes, StandardCharsets.UTF_8);
     }
 }
