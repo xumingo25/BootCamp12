@@ -1,4 +1,4 @@
-package bpino.pom.tests;
+package bpino.pom.tests.spotify;
 
 import bpino.pom.base.TestBase;
 import bpino.pom.pages.spotify.HomePage;
