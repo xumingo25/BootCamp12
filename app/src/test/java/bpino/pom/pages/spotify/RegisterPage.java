@@ -17,11 +17,10 @@ public class RegisterPage extends SeleniumBase {
     By locatorTxtContrasena = By.xpath("//input[@type=\"password\"]");
     By locatorTxtApodo = By.xpath("//input[@id='displayname']");
     By locatorTxtDia = By.xpath("//input[@name='day']");
-
     By locatorTxtAnnio = By.xpath("//input[@name='year']");
     By locatorCBMes = By.xpath("//select");
     By locatorGeneros = By.xpath("//label[contains(@for,'gender')]");
-    By locatorCheckBox = By.xpath("\"//label[contains(@for,'checkbox')]\"");
+    By locatorCheckBox = By.xpath("//label[contains(@for,'checkbox')]");
     By locatorBtnRegistrarse = By.xpath("//button[@type=\"submit\"]");
     By locatorTxtErrorCorreoExistente = By.xpath("//span[contains(text(),'Este correo')]");
 
@@ -80,6 +79,3 @@ public class RegisterPage extends SeleniumBase {
         return obtenerTexto(locatorTxtErrorCorreoExistente);
     }
 }
-
-
-
