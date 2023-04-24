@@ -20,10 +20,10 @@ public class HomePage extends SeleniumBase {
 
     public void buscarProducto(String producto) {
         if (estaDesplegado(locatorTxtCookies)) {
-            clickear(locatorTxtCookies);
-            clickear(locatorTxtUbicacion);
+            clickear(esperarPorElementoVisible(locatorTxtCookies));
+            clickear(esperarPorElementoVisible(locatorTxtUbicacion));
             escribir(producto, locatorInputProducto);
-            clickear(locatorBtnBuscar);
+            clickear(esperarPorElementoVisible(locatorBtnBuscar));
         }
     }
 }

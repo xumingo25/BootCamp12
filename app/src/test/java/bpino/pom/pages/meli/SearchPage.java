@@ -12,6 +12,6 @@ public class SearchPage extends SeleniumBase {
     By locatorTxtProducto = By.xpath("//h2[contains(text(),'Bastones De Trekking 2 Unidades Par Ajustable Aluminio 7075')]");
     public void seleccionProducto(){
         scroll(buscarElementoWeb(locatorTxtProducto));
-        clickear(locatorTxtProducto);
+        clickear(esperarPorElementoVisible(locatorTxtProducto));
     }
 }

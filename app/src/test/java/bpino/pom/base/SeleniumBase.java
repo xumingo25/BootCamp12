@@ -95,4 +95,10 @@ public class SeleniumBase {
 
         return wait.until(ExpectedConditions.visibilityOf(element));
     }
+
+    public WebElement esperarPorElementoVisible(By localizador){
+        wait = new WebDriverWait(driver,20);
+
+        return wait.until(ExpectedConditions.presenceOfElementLocated(localizador));
+    }
 }

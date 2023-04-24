@@ -12,6 +12,6 @@ public class ProductPage extends SeleniumBase {
 
     public void comprarProducto(){
         scroll(buscarElementoWeb(locatorBtnComprar));
-        clickear(locatorBtnComprar);
+        clickear(esperarPorElementoVisible(locatorBtnComprar));
     }
 }
