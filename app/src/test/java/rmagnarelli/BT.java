@@ -17,8 +17,7 @@ import java.util.concurrent.TimeUnit;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-class ChromeTest {
-
+class BrowserTest {
 
         WebDriver driver;
         WebElement element;
@@ -40,7 +39,7 @@ class ChromeTest {
 
         @Test
         void test() {
-            // Ejercicio
+            // Exercise
             driver.get("https://www.google.com");
             driver.manage().window().maximize();
             driver.findElement(By.id("APjFqb")).sendKeys("TSOFT" + Keys.ENTER);

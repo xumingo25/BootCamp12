@@ -1,4 +1,4 @@
-package dpites;
+package bpino;
 
 //import static org.assertj.core.api.Assertions.assertThat;
 import org.junit.jupiter.api.AfterEach;
@@ -12,8 +12,11 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
-class BrowserTest {
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
+class TareaTsoft {
 
     WebDriver driver;
 
@@ -28,35 +31,27 @@ class BrowserTest {
     }
 
     @AfterEach
-    void teardown() {driver.quit();}
+    void teardown() {
+        driver.quit();
+    }
 
     @Test
     void test() {
+        // Exercise
         driver.get("https://www.google.com/");
+        driver.manage().window().maximize();
+        WebElement buscar = driver.findElement(By.name("q"));
+        buscar.sendKeys("Tsoft");
+        buscar.sendKeys(Keys.ENTER);
+        WebElement t = driver.findElement(By.partialLinkText("HOME - TSOFT"));
+        t.click();
         String title = driver.getTitle();
-        System.out.println("Titulo de la pagina: "+title);
-
-        driver.navigate().to("https://www.youtube.com/");
-        title = driver.getTitle();
-        System.out.println("Titulo de la pagina: "+title);
+        System.out.println("Titulo de pagina: "+title);
+        String titulo = "HOME - TSOFT - Make IT Real";
+        assertEquals(titulo, driver.getTitle());
         // Verify
         //assertThat(title).contains("Selenium WebDriver");
     }
-    
-    @Test
-    void testTareaGoogle(){
-    driver.navigate().to("https://www.google.com") ;
-        driver.manage().window().maximize();
-        driver.findElement(By.id("APjFqb")).sendKeys("tsoft",(Keys.ENTER));
-        driver.findElement(By.className("byrV5b")).click();
-        String title = driver.getTitle();
-        System.out.println("Titulo de la pagina: "+title);
-
-        //driver.manage().window().setSize(new Dimension(1920, 1080));
-        //driver.manage().window().fullscreen();
-   }
-
-
 
 }
 
