@@ -4,13 +4,17 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.util.List;
 
 public class SeleniumBase {
     //Atributos
     private WebDriver driver;
+
+    private WebDriverWait wait;
 
     private Select select;
     private JavascriptExecutor js;
@@ -58,6 +62,11 @@ public class SeleniumBase {
         driver.findElement(localizador).sendKeys(texto);
     }
 
+    public void escribir(String texto, WebElement elemento){
+        elemento.sendKeys(texto);
+    }
+
+
     public void cerrarVentana(){
         driver.close();
     }
@@ -90,6 +99,12 @@ public class SeleniumBase {
     public void seleccionarComboBoxPorTextoVisible(WebElement elemento,String valor){
         select = new Select(elemento);
         select.selectByVisibleText(valor);
+    }
+
+    public WebElement esperarPorElementoVisible(WebElement element){
+        wait = new WebDriverWait(driver,20);
+
+        return wait.until(ExpectedConditions.visibilityOf(element));
     }
 
 }
