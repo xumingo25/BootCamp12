@@ -15,14 +15,14 @@ public class TestsSpotify extends TestBase {
     public void CP001_FormularioOK(){
         homePage.irARegistrarte();
         registerPage.completarFormularioRegistro
-                ("prueba123453321@gmail.com",
-                        "prueba123453321@gmail.com",
-                        "F+++21312",
-                        "Pobre Domingo",
-                        "28",
-                        "Febrero",
-                        "1991",
-                        "hombre",
+                ("probando_nuevamusica@gmail.com",
+                        "probando_nuevamusica@gmail.com",
+                        "Probando123",
+                        "Testeando2023",
+                        "18",
+                        "Marzo",
+                        "1984",
+                        "mujer",
                         true,
                         true);
     }
@@ -34,14 +34,14 @@ public class TestsSpotify extends TestBase {
         homePage.navegarAPagina("https://www.spotify.com/");
         homePage.irARegistrarte();
         registerPage.completarFormularioRegistro
-                ("domingo.saavedra.saavedra@gmail.com",
-                        "domingo.saavedra.saavedra@gmail.com",
-                        "F+++21312",
-                        "Pobre Domingo",
-                        "28",
-                        "Febrero",
-                        "1991",
-                        "hombre",
+                ("probando_nuevamusica@gmail.com",
+                        "probando_nuevamusica@gmail.com",
+                        "Probando123",
+                        "Testeando2023",
+                        "18",
+                        "Marzo",
+                        "1984",
+                        "mujer",
                         true,
                         true);
         Assertions.assertEquals(registerPage.obtenerErrorCorreoUtilizado(), ManejoEncodingUFT8.fixEncoding("Este correo electrónico ya está conectado a una cuenta. Inicia sesión."));

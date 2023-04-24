@@ -140,9 +140,9 @@ public class RegisterSpotifyTest {
             generos = wait.until(ExpectedConditions.presenceOfAllElementsLocatedBy(locatorGeneros));
 
             //Scroll a los generos
-            js.executeScript("arguments[0].scrollIntoView(true);", generos.get(0));
+            js.executeScript("arguments[0].scrollIntoView(true);", generos.get(1));
 
-            generos.get(0).click();
+            generos.get(1).click();
         }catch (Exception e){
             e.printStackTrace();
             System.out.println("ocurrio un error al obtener el elemento web con el locator "+ locatorGeneros.toString());

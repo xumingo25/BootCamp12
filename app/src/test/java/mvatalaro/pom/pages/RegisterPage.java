@@ -34,23 +34,23 @@ public class RegisterPage extends SeleniumBase {
     By locatorTxtErrorCorreoExistente = By.xpath("//span[contains(text(),'Este correo')]");
 
     //Acciones
-        //CompletarElFormulario
-    public void completarFormularioRegistro(String correo,String confirmarCorreo,String password, String apodo, String dia, String mes,String annio,String genero, boolean recibirMensaje, boolean compartirDatos){
+    //CompletarElFormulario
+    public void completarFormularioRegistro(String correo, String confirmarCorreo, String password, String apodo, String dia, String mes, String annio, String genero, boolean recibirMensaje, boolean compartirDatos) {
 
-        escribir(correo,locatorTextBoxCorreo);
-        if(estaDesplegado(locatorTextBoxConfirmarCorreo)){
-            escribir(confirmarCorreo,locatorTextBoxConfirmarCorreo);
+        escribir(correo, locatorTextBoxCorreo);
+        if (estaDesplegado(locatorTextBoxConfirmarCorreo)) {
+            escribir(confirmarCorreo, locatorTextBoxConfirmarCorreo);
         }
-        escribir(password,locatorTextBoxContrasena);
-        escribir(apodo,locatorTextBoxApodo);
-        escribir(dia,locatorTextBoxDia);
+        escribir(password, locatorTextBoxContrasena);
+        escribir(apodo, locatorTextBoxApodo);
+        escribir(dia, locatorTextBoxDia);
         scrolling(buscarElementoWeb(locatorTextBoxDia));
-        seleccionarComboBoxPorTextoVisible(buscarElementoWeb(locatorComboBoxMes),"Febrero");
-        escribir(annio,locatorTxtAnnio);
+        seleccionarComboBoxPorTextoVisible(buscarElementoWeb(locatorComboBoxMes), "Marzo");
+        escribir(annio, locatorTxtAnnio);
 
-        List <WebElement> generos = buscarElementosWeb(locatorGeneros);
+        List<WebElement> generos = buscarElementosWeb(locatorGeneros);
 
-        switch (genero.toLowerCase()){
+        switch (genero.toLowerCase()) {
             case "hombre":
                 clickear(generos.get(0));
                 break;
@@ -71,24 +71,25 @@ public class RegisterPage extends SeleniumBase {
                 break;
         }
 
-        List <WebElement> checks = buscarElementosWeb(locatorCheckBoxs);
+        List<WebElement> checks = buscarElementosWeb(locatorCheckBoxs);
 
         scrolling(checks.get(0));
 
-        if(recibirMensaje){
+        if (recibirMensaje) {
             clickear(checks.get(0));
         }
 
         scrolling(checks.get(1));
 
-        if(compartirDatos){
+        if (compartirDatos) {
             clickear(checks.get(1));
         }
 
         clickear(locatorBtnRegistrate);
     }
 
-    public String obtenerErrorCorreoUtilizado(){
+    public String obtenerErrorCorreoUtilizado() {
         return obtenerTexto(locatorTxtErrorCorreoExistente);
     }
+
 }
