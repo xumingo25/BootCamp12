@@ -27,6 +27,8 @@ public class RegisterPage extends SeleniumBase {
 
     By locatorTxtErrorCorreoExistente = By.xpath("//span[contains(text(),'Este correo')]");
 
+    By locatorErrorClaveMuyCorta = By.xpath("//span[contains(text(), 'Tu contrase')]");
+
     //Métodos de la page
 
     public void llenarFormularioRegistro(String correo, String confirmarCorreo, String password, String nombre, String dia, String mes, String anio, String genero, boolean mensaje, boolean compartirDatos){
@@ -81,4 +83,6 @@ public class RegisterPage extends SeleniumBase {
     public String obtenerErrorCorreoUtilizado(){
         return obtenerTexto(locatorTxtErrorCorreoExistente);
     }
+
+    public String obtenerErrorClaveMuyCorta(){return  obtenerTexto(locatorErrorClaveMuyCorta);}
 }
