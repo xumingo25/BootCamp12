@@ -5,7 +5,6 @@ import dsaavedra.pom.utilities.ManejoEncodingUFT8;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
-import static bpino.pom.utilities.ManejoEncodingUFT8.fixEncoding;
 
 public class LoginPage extends SeleniumBase {
     public LoginPage(WebDriver driver) {
