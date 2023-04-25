@@ -1,19 +1,26 @@
 package abracamonte.pom.base;
 
-import org.openqa.selenium.By;
-import org.openqa.selenium.JavascriptExecutor;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
+import org.apache.commons.io.FileUtils;
+import org.openqa.selenium.*;
+import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.List;
 
 public class SeleniumBase {
     private WebDriver driver;
 
     private WebDriverWait wait;
+
+    private  TakesScreenshot takesScreenshot;
+
+
+
+    private ChromeDriver chromeDriver;
 
     private Select select;
     private JavascriptExecutor js;
@@ -107,4 +114,18 @@ public class SeleniumBase {
 
         return wait.until(ExpectedConditions.visibilityOf(element));
     }
+
+    public void capturaPantalla(String texto, WebDriver driver) throws IOException {
+
+
+        TakesScreenshot takesScreenshot =(( TakesScreenshot ) driver );
+
+        File SrcFile = takesScreenshot . getScreenshotAs (OutputType.FILE);
+
+        File DestFile=new File(texto);
+        FileUtils.copyFile(SrcFile, DestFile);
+
+    }
+
+
 }
