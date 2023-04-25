@@ -1,5 +1,4 @@
-
-package dsaavedra.pom.base;
+package csalgan.pom.base;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.junit.jupiter.api.AfterEach;
@@ -11,7 +10,6 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import java.util.concurrent.TimeUnit;
 
 public class TestBase {
-    //WebDriver
     public WebDriver driver;
 
     @BeforeAll
