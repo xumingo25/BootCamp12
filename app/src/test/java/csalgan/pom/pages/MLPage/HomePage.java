@@ -14,7 +14,8 @@ public class HomePage extends SeleniumBase{
 
     //localizador
     By locatorSearchCategories = By.xpath("//input[@id='cb1-edit']");
-    By locatorCardInterestMe = By.xpath("//h2[contains(text(),'Bolso Transportador Para Mascota')]");
+    By locatorCardInterestMe = By.xpath("//ol[@class='ui-search-layout ui-search-layout--stack shops__layout']/li[1]//h2[@class='ui-search-item__title shops__item-title']");
+
 
     //h2[contains(text(),'Bicicleta Mountain Mtb Firebird Rodado 29 21v Envi')]
     //By locatorCardInterestMe = By.xpath("//*[@id=\'root-app\']/div/div[2]/section/ol/li[15]/div/div/div[1]/a/div/div/div/div/div/img");
@@ -36,8 +37,7 @@ public class HomePage extends SeleniumBase{
     public void navegarPorProductos(){
         clickear(locatorSearchCategorieButton);
         scrolling(buscarElementoWeb(locatorCardInterestMe));
-        clickear(buscarPorElementoClicable(buscarElementoWeb(locatorCardInterestMe)));
-        clickear(locatorButtonBuyNow);
+        clickear(esperarPorElementoVisible(buscarElementoWeb(locatorCardInterestMe)));
         //quito esta linea bara buscar directamente el elemento card que me interesa
         //scrolling(cards.get(0));
 
