@@ -14,6 +14,7 @@ import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import java.nio.charset.StandardCharsets;
 import java.util.concurrent.TimeUnit;
 
 public class MercadoLibreTest {
@@ -23,6 +24,11 @@ public class MercadoLibreTest {
     WebDriverWait wait; //creo del atributo webDriverWait
 
     JavascriptExecutor js; //creo el atributo JavascriptExecutor
+
+    public static String fixEncoding(String text){
+        byte[] utf8Bytes = text.getBytes(StandardCharsets.ISO_8859_1);
+        return new String(utf8Bytes, StandardCharsets.UTF_8);
+    }
     @BeforeAll
     static void preparacionClase(){
         System.setProperty("file.encoding", "UTF-8");
@@ -89,7 +95,7 @@ public class MercadoLibreTest {
         WebElement itemHerramientas;
 
         try{
-            locatorItemHerramientas = By.xpath( "//a[@href=\"https://www.mercadolibre.com.ar/c/herramientas#menu=categories\"]"); ////a[contains(text(), 'Herramientas')] //ul[@class='nav-categs-departments']//descendant::li//a[contains(text(), 'Herramientas')]
+            locatorItemHerramientas = By.xpath( "//ul[@class='nav-categs-departments']//descendant::li//a[contains(text(), 'Herramientas')]"); ////a[contains(text(), 'Herramientas')] //ul[@class='nav-categs-departments']//descendant::li//a[contains(text(), 'Herramientas')]
             itemHerramientas = wait.until(ExpectedConditions.presenceOfElementLocated(locatorItemHerramientas));                //ul[@class="nav-categs-departments"]//descendant::li//a[contains(text(), 'Herramientas')]
             js.executeScript("arguments[0].click();", itemHerramientas);
 
@@ -130,7 +136,7 @@ public class MercadoLibreTest {
 
         //*********************Resultados********************************************************
 
-        String resultadoEsperado ="¡Hola! Para comprar ingresa a tu cuenta";
+        String resultadoEsperado ="¡Hola! Para comprar, ingresá a tu cuenta";
 
         String resultadoActual = wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//h1[@class=\"center-card__title\"]"))).getText();
 
