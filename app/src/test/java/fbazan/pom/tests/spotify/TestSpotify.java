@@ -1,8 +1,8 @@
-package fbazan.pom.tests;
+package fbazan.pom.tests.spotify;
 
 import fbazan.pom.base.TestBase;
-import fbazan.pom.pages.HomePage;
-import fbazan.pom.pages.RegisterPage;
+import fbazan.pom.pages.spotify.HomePage;
+import fbazan.pom.pages.spotify.RegisterPage;
 import fbazan.pom.utilities.ManejoEncodingUFT8;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;

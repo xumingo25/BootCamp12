@@ -1,9 +1,6 @@
 package fbazan.pom.base;
 
-import org.openqa.selenium.By;
-import org.openqa.selenium.JavascriptExecutor;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
+import org.openqa.selenium.*;
 import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
@@ -17,6 +14,7 @@ public class SeleniumBase {
     private Select select;
     private WebDriverWait wait;
     private JavascriptExecutor js;
+
 
     //metodos
     public SeleniumBase(WebDriver driver) {
@@ -54,11 +52,13 @@ public class SeleniumBase {
     }
 
     public void escribir (String texto, By localizador){
+
         driver.findElement(localizador).sendKeys(texto);
     }
 
     public void escribir (String texto, WebElement elemento){
         elemento.sendKeys(texto);
+        elemento.sendKeys(Keys.ENTER);
     }
 
     public void cerrarVentana (){

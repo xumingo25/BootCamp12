@@ -1,4 +1,4 @@
-package fbazan.pom.pages;
+package fbazan.pom.pages.spotify;
 
 import fbazan.pom.base.SeleniumBase;
 import org.openqa.selenium.By;
