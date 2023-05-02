@@ -7,8 +7,8 @@ import org.openqa.selenium.WebElement;
 
 import java.util.List;
 
-public class RegisterPage extends SeleniumBase {
-    public RegisterPage(WebDriver driver) {
+public class RegisterPageSpotify extends SeleniumBase {
+    public RegisterPageSpotify(WebDriver driver) {
         super(driver);
     }
 

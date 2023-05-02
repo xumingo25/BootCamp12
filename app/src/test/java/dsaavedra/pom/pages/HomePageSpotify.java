@@ -4,8 +4,8 @@ import dsaavedra.pom.base.SeleniumBase;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
-public class HomePage extends SeleniumBase {
-    public HomePage(WebDriver driver) {
+public class HomePageSpotify extends SeleniumBase {
+    public HomePageSpotify(WebDriver driver) {
         super(driver);
     }
 
