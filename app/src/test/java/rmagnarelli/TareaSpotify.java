@@ -71,11 +71,11 @@ public class TareaSpotify {
 
         driver.manage().timeouts().implicitlyWait(7, TimeUnit.SECONDS);
         correo.click();
-        correo.sendKeys("callefalsaromag@gmail.com");
+        correo.sendKeys("callefalsaromagna@gmail.com");
 
 
         if(driver.findElement(By.xpath("//*[@id=\'confirm\']")).isDisplayed()){
-            confirmarcorreo.sendKeys("callefalsaromag@gmail.com");
+            confirmarcorreo.sendKeys("callefalsaromagna@gmail.com");
         }
 
 
