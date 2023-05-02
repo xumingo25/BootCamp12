@@ -1,4 +1,4 @@
-package fbenavides;
+package fbenavides.MisPrimerosTests;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.junit.jupiter.api.*;
