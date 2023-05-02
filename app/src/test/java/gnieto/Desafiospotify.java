@@ -1,5 +1,4 @@
 package gnieto;
-
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
@@ -14,6 +13,10 @@ import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.JavascriptExecutor;
 import java.util.concurrent.TimeUnit;
 
+
+
+
+
 class DesafioSpotify {
 
     WebDriver driver;
@@ -26,15 +29,15 @@ class DesafioSpotify {
     @FindBy(xpath = "//*[@id='__next']/main/div/div/form/div[8]/div/button/span[1]")
     WebElement ingresar;
 
-    @FindBy(xpath = "//*[@id=\"__next\"]/main/div/div/form/div[5]/div/label/span[1]")
+    @FindBy(xpath = "//*[@id=\"__next\"]/main/div/div/form/div[6]/div/label/span[1]")
     WebElement Noquiero;
 
-    @FindBy(xpath = "//*[@id=\"__next\"]/main/div/div/form/div[7]/div/button/span[1]")
-    WebElement registrarse;
+//@FindBy(xpath = "//*[@id=\"__next\"]/main/div/div/form/div[7]/div/button/span[1]")
+// WebElement registrarse;
 
 
-    //@FindBy(xpath = "//*[@id=\"main\"]/div/div[2]/div[1]/header/button[1]")
-  //  WebElement mejorar;
+//@FindBy(xpath = "//*[@id=\"main\"]/div/div[2]/div[1]/header/button[1]")
+// WebElement mejorar;
 
 
     @BeforeAll
@@ -50,6 +53,8 @@ class DesafioSpotify {
 
 // Maximizar la página
         driver.manage().window().maximize();
+        driver.manage().deleteAllCookies();
+
     }
 
     @Test
@@ -61,16 +66,17 @@ class DesafioSpotify {
 
 // Crear usuario con correo electrónico
         WebElement email = driver.findElement(By.xpath("//*[@id=\"email\"]"));
-        email.sendKeys("57-guada@algo.com");
+        email.sendKeys("nachitoo-guada@algo.com");
 
 
-        // Confirmación de correo electrónico
+// Confirmación de correo electrónico
         WebElement confirmEmail = driver.findElement(By.xpath("//*[@id=\"confirm\"]"));
-        confirmEmail.sendKeys("57-guada@algo.com");
+        confirmEmail.sendKeys("nachitoo-guada@algo.com");
 
 // Cerrar cuadro de dialogo de las cookies
         WebElement cache = driver.findElement(By.xpath("//*[@id=\"onetrust-close-btn-container\"]/button"));
         cache.click();
+
 
 
 // Contraseña
@@ -93,27 +99,38 @@ class DesafioSpotify {
         ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView();", genero);
 
 
+
         genero.click();
+
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 
+//((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView();", Noquiero);
 
-        ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView();", Noquiero);
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+        WebElement Noquiero = ((WebDriver) driver).findElement(By.xpath("//*[@id=\"__next\"]/main/div/div/form/div[6]/div/label/span[1]"));
+        Noquiero.click();
 
-       // WebElement mejora = driver.findElement(By.xpath("//*[@id=\"main\"]/div/div[2]/div[1]/header/button[1]"));
 
 
-        // Aquí hacemos clic en el botón "Registrarse"
+// WebElement mejora = driver.findElement(By.xpath("//*[@id=\"main\"]/div/div[2]/div[1]/header/button[1]"));
+
+
+// Aquí hacemos click en el botón "Registrarse"
         WebElement registrarse = driver.findElement(By.xpath("//*[@id=\"__next\"]/main/div/div/form/div[8]/div/button/span[1]"));
 
 
-        Noquiero.click();
+
         ingresar.submit();
         registrarse.click();
 
+// limpia el cache del navegador
+
+        JavascriptExecutor js = (JavascriptExecutor) driver;
+        js.executeScript("window.localStorage.clear();");
 
 
-      //  mejorar.click();
+
+// mejorar.click();
 
 
     }
@@ -123,6 +140,7 @@ class DesafioSpotify {
 
     @AfterEach
     void posTests() {
-        //driver.close();
+//driver.close();
     }
 }
+
