@@ -51,6 +51,7 @@ public class SeleniumBase {
         elemento.click();
     }
 
+
     public void escribir (String texto, By localizador){
 
         driver.findElement(localizador).sendKeys(texto);
