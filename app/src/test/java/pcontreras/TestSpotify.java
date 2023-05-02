@@ -37,6 +37,19 @@ class TareaLocators {
         btnRegistrase.click();
         Thread.sleep(5000);
         WebElement email = driver.findElement(By.xpath("//*[@id=\"email\"]"));
+<<<<<<< HEAD
+            email.sendKeys("mailfalso@gfalso.com");
+        WebElement password = driver.findElement(By.xpath("//*[@id=\"password\"]"));
+            password.sendKeys("ContraFalsa_1234");
+        WebElement name = driver.findElement(By.xpath("//*[@id=\"displayname\"]"));
+            name.sendKeys("Erbmon Oslaf");
+        WebElement birthDate = driver.findElement(By.xpath("//*[@id=\"day\"]"));
+            birthDate.sendKeys("17");
+        WebElement birthYear = driver.findElement(By.xpath("//*[@id=\"year\"]"));
+            birthYear.sendKeys("1994");
+        WebElement birthMonth = driver.findElement(By.xpath("//*[@id=\"month\"]"));
+            birthMonth.sendKeys("Febrero");
+=======
         email.sendKeys("mailfalso@gfalso.com");
         WebElement password = driver.findElement(By.xpath("//*[@id=\"password\"]"));
         password.sendKeys("ContraFalsa_1234");
@@ -48,6 +61,7 @@ class TareaLocators {
         birthYear.sendKeys("1994");
         WebElement birthMonth = driver.findElement(By.xpath("//*[@id=\"month\"]"));
         birthMonth.sendKeys("Febrero");
+>>>>>>> 00fcb2563c792b2aeba74cca0e8cd4fabac0d7d9
         //WebElement gender = driver.findElement(By.xpath("//*[@id=\"gender_option_female\"]")).sendKeys("Mujer");
         //WebElement optBox = driver.findElement(By.xpath("//*[@id=\"marketing_check_optbox\"]"));
         //    optBox.click();

@@ -1,4 +1,4 @@
-package dsaavedra.pom.pages;
+package dpites.pom.pages;
 
 import dsaavedra.pom.base.SeleniumBase;
 import org.openqa.selenium.By;
@@ -34,7 +34,7 @@ public class RegisterPage extends SeleniumBase {
     By locatorTxtErrorCorreoExistente = By.xpath("//span[contains(text(),'Este correo')]");
 
     //Acciones
-        //CompletarElFormulario
+    //CompletarElFormulario
     public void completarFormularioRegistro(String correo,String confirmarCorreo,String password, String apodo, String dia, String mes,String annio,String genero, boolean recibirMensaje, boolean compartirDatos){
 
 
@@ -58,7 +58,7 @@ public class RegisterPage extends SeleniumBase {
             case "mujer":
                 clickear(generos.get(1));
                 break;
-            case "no ninario":
+            case "no binario":
                 clickear(generos.get(2));
                 break;
             case "otro":
@@ -93,3 +93,4 @@ public class RegisterPage extends SeleniumBase {
         return obtenerTexto(locatorTxtErrorCorreoExistente);
     }
 }
+

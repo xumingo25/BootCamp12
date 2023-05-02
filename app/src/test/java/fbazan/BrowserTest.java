@@ -37,8 +37,8 @@ class ChromeTest {
     void test() {
         //Exercise
         driver.get("https://www.google.com/");
-        String title = driver.getTitle();
-        System.out.println("Titulo de pagina de google: "+ title);
+        //String title = driver.getTitle();
+        //System.out.println("Titulo de pagina de google: "+ title);
         driver.manage().window().maximize();
 
         // Encontrar el campo de búsqueda y escribir el término de búsqueda
@@ -65,12 +65,11 @@ class ChromeTest {
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-
-        title = driver.getTitle();
-        System.out.println("Titulo de pagina de TSoft: "+ title);
-
-        // Cerrar el navegador
-        driver.quit();
+        //guardamos el titulo de la pagina de tsoft y luego lo mostramos por pantalla
+        String title = driver.getTitle();
+        System.out.println("Titulo de pagina de TSoft: " + title);
     }
+
+
 }
 

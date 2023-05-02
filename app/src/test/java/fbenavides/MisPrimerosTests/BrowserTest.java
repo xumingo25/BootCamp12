@@ -1,4 +1,4 @@
-package fbenavides;
+package fbenavides.MisPrimerosTests;
 
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;

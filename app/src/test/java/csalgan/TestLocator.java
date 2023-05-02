@@ -12,14 +12,20 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
+import java.time.Instant;
 import java.util.concurrent.TimeUnit;
-
 import static org.openqa.selenium.By.xpath;
 
 public class TestLocator {
 
     WebDriver driver;
+    WebDriverWait wait;
+
+    JavascriptExecutor js;
+
 
     @FindBy(xpath = "//button[contains(text(),'Registra')]")
     WebElement btnRegistrase;
@@ -56,32 +62,39 @@ public class TestLocator {
 
 
 
+
     @BeforeAll
     static void preparacionClase(){
         WebDriverManager.chromedriver().setup();
+
 
     }
 
     @BeforeEach
     void preTests(){
         driver = new ChromeDriver();
+        wait = new WebDriverWait(driver,10);
+        js = (JavascriptExecutor) driver;
         PageFactory.initElements(driver,this);
         driver.get("https://open.spotify.com/");
 
         //Maximizar page
         driver.manage().window().maximize();
+        driver.manage().timeouts().pageLoadTimeout(10, TimeUnit.SECONDS);
+        driver.manage().timeouts().implicitlyWait(10,TimeUnit.SECONDS);
+
     }
 
     @Test
-    void testEjemploSpotify() {
+    void testEjemploSpotifyCasoExitoso() {
         //Aqui crearemos el test
         btnRegistrase.click();
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-        inputEmail.sendKeys("caramelitocato@gmail.com");
+        inputEmail.sendKeys("claudiabettuzzi@gmail.com");
         if(driver.findElement(By.xpath("//*[@id=\'confirm\']")).isDisplayed()){
-            inputEmailConfir.sendKeys("caramelitocato@gmail.com");
+            inputEmailConfir.sendKeys("claudiabettuzzi@gmail.com");
         }
-        inputPassword.sendKeys("2234567");
+        inputPassword.sendKeys("2234567caramelito");
         optionName.sendKeys("caramelito");
         dayBirthday.sendKeys("23");
         monthBirthday.sendKeys("December");
@@ -90,14 +103,14 @@ public class TestLocator {
         sexOption.click();
         publicityOption.click();
         infoShare.click();
-        registerButton.click();
-
-
+        //registerButton.click();
     }
+
+
 
     @AfterEach
     void posTests(){
-        //driver.close();
+        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+        driver.close();
     }
-
 }
