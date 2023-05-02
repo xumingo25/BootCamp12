@@ -1,8 +1,6 @@
 package bpino;
 
 //import static org.assertj.core.api.Assertions.assertThat;
-
-import io.github.bonigarcia.wdm.WebDriverManager;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
@@ -13,7 +11,12 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 
-class BrowserTest {
+import io.github.bonigarcia.wdm.WebDriverManager;
+import org.openqa.selenium.support.ui.WebDriverWait;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
+class TareaTsoft {
 
     WebDriver driver;
 
@@ -44,9 +47,11 @@ class BrowserTest {
         t.click();
         String title = driver.getTitle();
         System.out.println("Titulo de pagina: "+title);
-
+        String titulo = "HOME - TSOFT - Make IT Real";
+        assertEquals(titulo, driver.getTitle());
         // Verify
         //assertThat(title).contains("Selenium WebDriver");
     }
 
 }
+

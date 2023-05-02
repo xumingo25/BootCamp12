@@ -1,6 +1,4 @@
-package bpino;
-
-//import static org.assertj.core.api.Assertions.assertThat;
+package pcontreras;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.junit.jupiter.api.AfterEach;
@@ -13,7 +11,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 
-class BrowserTest {
+class testMeLi {
 
     WebDriver driver;
 
@@ -25,26 +23,26 @@ class BrowserTest {
     @BeforeEach
     void setupTest() {
         driver = new ChromeDriver();
+        driver.manage().window().maximize();
     }
 
     @AfterEach
     void teardown() {
-        driver.quit();
+        //driver.quit();
     }
 
     @Test
-    void test() {
-        // Exercise
-        driver.get("https://www.google.com/");
-        driver.manage().window().maximize();
-        WebElement buscar = driver.findElement(By.name("q"));
-        buscar.sendKeys("Tsoft");
-        buscar.sendKeys(Keys.ENTER);
-        WebElement t = driver.findElement(By.partialLinkText("HOME - TSOFT"));
-        t.click();
-        String title = driver.getTitle();
-        System.out.println("Titulo de pagina: "+title);
+    void testAbrirPag() {
+        driver.navigate().to("https://www.mercadolibre.cl/");
 
+        WebElement searchBar = driver.findElement(By.xpath("//*[@id=\"cb1-edit\"]"));
+            searchBar.sendKeys("puur bottle denda");
+
+        WebElement btnSubmit = driver.findElement(By.xpath("//header/div[1]/div[2]/form[1]/button[1]"));
+            btnSubmit.submit();
+
+        WebElement btnProducto1 = driver.findElement(By.xpath("//h2[contains(text(),'Puur Bottle Blossom Blue 500ml - Puur')]"));
+            btnProducto1.submit();
         // Verify
         //assertThat(title).contains("Selenium WebDriver");
     }
