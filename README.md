@@ -23,3 +23,4 @@ Participantes:
 * Francisca Benavides
 * Rocio Quezada
 * Abril Bracamonte
+* Soledad Lemes
