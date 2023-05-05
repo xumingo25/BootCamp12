@@ -4,7 +4,6 @@ import io.github.bonigarcia.wdm.WebDriverManager;
 import org.junit.jupiter.api.*;
 import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -155,6 +154,7 @@ public class TareaLocalizadores {
             e.printStackTrace();
             System.out.println("Ocurrio un error al obtener el elemento web" + locatorBtnConfirmarRegistro.toString());
         }
+    }
 
         /*
 
@@ -182,13 +182,13 @@ public class TareaLocalizadores {
 
         WebElement campoYear= driver.findElement(By.xpath("//input [@id = 'year']"));
         campoYear.sendKeys("1993");
-
+*/
 
         @AfterEach
         void posTests () {
             driver.close();
-        }*/
+        }
     }
-}
+
 
 
